@@ -1,7 +1,6 @@
-import { Field } from "../types/field.type";
-import { QueryGroup } from "../types/group.type";
+import { Field, QueryGroup } from '../query.types';
 
-export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>) {
+export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>): void {
 
   if (queryGroup.rules != null) {
     for (const rule of queryGroup.rules) {
@@ -9,10 +8,10 @@ export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>
         rule['sdata'] = rule.data;
       }
 
-      if (typeof rule.field == 'string') {
-        var field = fields.find(x => x.name === rule.field);
+      if (typeof rule.field === 'string') {
+        var field: any = fields.find(x => x.name === rule.field);
 
-        if (field == undefined || field == null) {
+        if (field === undefined || field === null) {
           throw new Error(`Can't found out a field by name '${rule.field}'.`);
         }
 
@@ -21,7 +20,7 @@ export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>
     }
   }
 
-  if (queryGroup.groups != null) {
+  if (queryGroup.groups && queryGroup.groups !== null) {
     for (const group of queryGroup.groups) {
       translateQueryGroup(group, fields);
     }
@@ -55,7 +54,7 @@ export function cloneQueryGroup(source: QueryGroup): QueryGroup {
 }
 
 export function generateQuery(queryGroup: QueryGroup): QueryGroup {
-  if (queryGroup == undefined || queryGroup == null) {
+  if (queryGroup === undefined || queryGroup === null) {
     return undefined;
   }
 

@@ -57,7 +57,7 @@
       "variable-declaration",
       "member-variable-declaration"
     ],
-    "directive-selector": [true, "attribute", "ngx-query", "camelCase"],
+    "directive-selector": [true, "attribute", "ngx-query", "kebab-case"],
     "component-selector": [true, "element", "ngx-query", "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -68,7 +68,7 @@
     "no-forward-ref": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "pipe-naming": [true, "camelCase", "ngx-query"],
+    "pipe-naming": [true, "camelCase", "ngxQuery"],
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "import-destructuring-spacing": true,

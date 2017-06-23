@@ -1,31 +1,34 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Field } from "../types/field.type";
-import { QueryGroup, GroupOpType, GroupOpItem } from "../types/group.type";
-import { QueryConfigurationService } from "../services/configuration.service";
+import { Field, QueryGroup, GroupOpType, GroupOpItem } from '../query.types';
+import { QueryConfigurationService } from '../services/configuration.service';
 
 @Component({
     selector: 'ngx-query-group',
     template:
     `
-    <div class="col-md-12">        
-        <div class="form-group">        
+    <div class="col-md-12">
+        <div class="form-group">
             <div class="col-md-3">
-                <div class="input-group">                    
+                <div class="input-group">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-default" (click)="addGroup()"><i class="glyphicon glyphicon-plus"></i> {{'{}'}}</button>
-                        <button type="button" class="btn btn-default" (click)="addRule()"><i class="glyphicon glyphicon-plus"></i></button>
-                        <button type="button" class="btn btn-default" *ngIf="canRemove" (click)="removeGroup()"><i class="glyphicon glyphicon-minus"></i></button>
+                        <button type="button" class="btn btn-default"
+                            (click)="addGroup()"><i class="glyphicon glyphicon-plus"></i> {{'{}'}}</button>
+                        <button type="button" class="btn btn-default"
+                            (click)="addRule()"><i class="glyphicon glyphicon-plus"></i></button>
+                        <button type="button" class="btn btn-default" *ngIf="canRemove"
+                            (click)="removeGroup()"><i class="glyphicon glyphicon-minus"></i></button>
                     </div>
                     <select class="form-control" [(ngModel)]="group.op">
-                        <option *ngFor="let item of groupOps" [ngValue]="item.key" [innerHtml]="item.label"></option>                        
+                        <option *ngFor="let item of groupOps" [ngValue]="item.key">{{item.label}}</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
     <div *ngIf="group.groups.length>0" class="col-md-12 ngx-query-group-children">
-        <ngx-query-group *ngFor="let group of group.groups" [group]="group" [fields]="fields" [canRemove]="true" (remove)="removeGroupItem($event)">
+        <ngx-query-group *ngFor="let group of group.groups" [group]="group"
+            [fields]="fields" [canRemove]="true" (remove)="removeGroupItem($event)">
         </ngx-query-group>
     </div>
     <div *ngIf="group.rules.length>0" class="col-md-12 ngx-query-group-children">
@@ -38,7 +41,7 @@ import { QueryConfigurationService } from "../services/configuration.service";
         margin-left:20px;
     }`]
 })
-export class GroupComponent implements OnInit {
+export class GroupComponent {
 
     @Input() group: QueryGroup;
     @Input() fields: Array<Field> = [];
@@ -51,10 +54,7 @@ export class GroupComponent implements OnInit {
         this.groupOps = this.config.groupOps;
     }
 
-    ngOnInit() {
-    }
-
-    addGroup() {
+    addGroup(): void {
         this.group.groups.push({
             op: GroupOpType.AND,
             groups: [],
@@ -62,8 +62,8 @@ export class GroupComponent implements OnInit {
         });
     }
 
-    addRule() {
-        var field;
+    addRule(): void {
+        var field: Field;
         if (this.fields.length > 0) {
             field = this.fields[0];
         }
@@ -75,11 +75,11 @@ export class GroupComponent implements OnInit {
         });
     }
 
-    removeGroup() {
+    removeGroup(): void {
         this.remove.emit(this.group);
     }
 
-    removeGroupItem(group: QueryGroup) {
-        this.group.groups = this.group.groups.filter(x => x != group);
+    removeGroupItem(group: QueryGroup): void {
+        this.group.groups = this.group.groups.filter(x => x !== group);
     }
 }

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import { DataType } from "../types/field.type";
-import { FieldOpItem, FieldOpType, GroupOpItem, GroupOpType } from "../types/group.type";
+import { DataType, FieldOpItem, FieldOpType, GroupOpItem, GroupOpType } from '../query.types';
 
 @Injectable()
 export class QueryConfigurationService {
 
-    labels = {
+    labels: any = {
+        buttons: {
+            'quick': 'Quick',
+            'advanced': 'Advanced',
+            'reset': 'Reset',
+            'search': 'Search'
+        },
         groupOp: {
             'and': 'all',
             'or': 'any'
@@ -47,7 +52,18 @@ export class QueryConfigurationService {
             ]
         }];
 
-    constructor() {
+    update(labels: any): void {
+        this.labels = Object.assign(this.labels, labels);
 
+        for (var groupOp of this.groupOps) {
+            groupOp.label = this.labels.groupOp[groupOp.key];
+        }
+
+        for (var dataTypeOp of this.dataTypeOps) {
+            for (var op of dataTypeOp.ops) {
+                op.label = this.labels.fieldOp[op.key];
+            }
+
+        }
     }
 }

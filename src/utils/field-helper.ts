@@ -1,10 +1,10 @@
-import { Field, DataType } from "../types/field.type";
-import { FieldDirective } from "../directives/field.directive";
-import { ValueInputTemplateDirective } from "../directives/value-input-template.directive";
+import { Field, DataType } from '../query.types';
+import { FieldDirective } from '../directives/field.directive';
+import { ValueInputTemplateDirective } from '../directives/value-input-template.directive';
 
 /**
  * Translates templates definitions to objects
- * 
+ *
  * @export
  * @param {FieldDirective[]} templates
  * @returns {any[]}
@@ -15,7 +15,7 @@ export function translateTemplates(templates: FieldDirective[]): any[] {
   for (const temp of templates) {
     const field: any = {};
 
-    const props = Object.getOwnPropertyNames(temp);
+    const props: any = Object.getOwnPropertyNames(temp);
     for (const prop of props) {
       field[prop] = temp[prop];
     }
@@ -30,25 +30,25 @@ export function translateTemplates(templates: FieldDirective[]): any[] {
   return result;
 }
 
-export function translateFields(fields: Field[], valueInputTemplates: Array<ValueInputTemplateDirective>) {
+export function translateFields(fields: Field[], valueInputTemplates: Array<ValueInputTemplateDirective>): void {
   for (const field of fields) {
     translateField(field, valueInputTemplates);
   }
 }
 
-export function translateField(field: Field, valueInputTemplates: Array<ValueInputTemplateDirective>) {
-  if (field.type == undefined || field.type == null) {
+export function translateField(field: Field, valueInputTemplates: Array<ValueInputTemplateDirective>): void {
+  if (field.type === undefined || field.type === null) {
     field.type = DataType.any;
   }
 
-  if (field.label == undefined || field.label == null) {
+  if (field.label === undefined || field.label === null) {
     field.label = field.name;
   }
 
-  if (field.valueInputTemplate == undefined || field.valueInputTemplate == null) {
-    var valueInputTemplate = valueInputTemplates.find(x => x.dataType === field.type);
+  if (field.valueInputTemplate === undefined || field.valueInputTemplate === null) {
+    var valueInputTemplate: ValueInputTemplateDirective = valueInputTemplates.find(x => x.dataType === field.type);
 
-    if (valueInputTemplate == undefined || valueInputTemplate == null) {
+    if (valueInputTemplate === undefined || valueInputTemplate === null) {
       throw new Error(`Can't fount out a template by type '${field.type}'.`);
     }
 

@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
-import { Field } from "../types/field.type";
-import { QueryGroup, Rule } from "../types/group.type";
-import { cloneQueryGroup, generateQuery } from "../utils/query-helper";
+import { Field, QueryGroup, Rule } from '../query.types';
+import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
 
 @Component({
   selector: 'ngx-query-plain',
-  template:
-  `<div class="row">
+  template: `
+  <div class="row">
     <div class="form-horizontal">
       <div class="col-md-6" *ngFor="let rule of rules">
         <div class="form-group">
@@ -18,46 +17,41 @@ import { cloneQueryGroup, generateQuery } from "../utils/query-helper";
         </div>
       </div>
     </div>
-  </div>`
+  </div>
+  `
 })
-export class PlainComponent implements OnInit {
-
-  tempQueryTemplate: QueryGroup;
-  rules: Rule[];
-
-  private _queryTemplate: QueryGroup;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class PlainComponent {
 
   @Input()
   set queryTemplate(val: QueryGroup) {
     this._queryTemplate = val;
-    this.tempQueryTemplate = cloneQueryGroup(this._queryTemplate);
-    this.rules = this.getRules(this.tempQueryTemplate);
+    this._tempQueryTemplate = cloneQueryGroup(this._queryTemplate);
+    this.rules = this.getRules(this._tempQueryTemplate);
   }
-
   get queryTemplate(): QueryGroup {
     return this._queryTemplate;
   }
 
-  reset() {
+  rules: Rule[];
+
+  private _tempQueryTemplate: QueryGroup;
+  private _queryTemplate: QueryGroup;
+
+  reset(): void {
     this.queryTemplate = this._queryTemplate;
   }
 
   getQuery(): QueryGroup {
-    return generateQuery(this.tempQueryTemplate);
+    return generateQuery(this._tempQueryTemplate);
   }
 
   private getRules(group: QueryGroup): Rule[] {
-    var rules = new Array<Rule>();
-    if (group.rules && group.rules != null && group.rules.length > 0) {
+    var rules: Array<Rule> = [];
+    if (group.rules && group.rules !== null && group.rules.length > 0) {
       rules = rules.concat(group.rules);
     }
 
-    if (group.groups && group.groups != null && group.groups.length > 0) {
+    if (group.groups && group.groups !== null && group.groups.length > 0) {
       for (const child of group.groups) {
         rules = rules.concat(this.getRules(child));
       }

@@ -1,9 +1,9 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
-import { DataType } from "../types/field.type";
+import { DataType } from '../query.types';
 
 @Directive({
-  selector: '[query-value-input-template]'
+  selector: '[ngx-query-value-input-template]'
 })
 export class ValueInputTemplateDirective {
 
