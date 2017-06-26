@@ -37,13 +37,7 @@ import { QueryConfigurationService } from '../src/services/configuration.service
   <div class="row">
     <div class="col-md-12">
       <h2>Sample 1</h2>
-      <ngx-query #query [title]="queryTitle" (query)="search($event)" [fields]="fields" [queryTemplates]="queryTemplates">
-        <!--<query-field name="field1" type="string">
-          <ng-template query-value-input-template>
-            <label>test</label>
-            <input type="text" class="form-control" />
-          </ng-template>
-        </query-field>-->
+      <ngx-query #ngxQuery1 [title]="queryTitle" (query)="search($event)" [fields]="fields" [queryTemplates]="queryTemplates">        
       </ngx-query>
       <pre *ngIf="query1">{{query1 | json}}</pre>
     </div>
@@ -55,6 +49,22 @@ import { QueryConfigurationService } from '../src/services/configuration.service
       <button type="button" class="btn btn-primary" (click)="setChinese()">中文(Chinese)</button>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Sample 3</h2>
+      <ngx-query #ngxQuery3 [title]="queryTitle" (query)="search3($event)" [queryTemplates]="queryTemplates3">
+        <ngx-query-field [name]="'field1'" [label]="'Full Name'" [type]="'string'" [custom]="dropdownItems">
+          <ng-template ngx-query-value-input-template let-rule="rule" let-dataIndex="dataIndex" let-options="custom">
+            <select class="form-control" [(ngModel)]="rule.datas[dataIndex]">
+              <option *ngFor="let item of options" [ngValue]="item.key">{{item.name}}</option>              
+            </select>
+          </ng-template>
+        </ngx-query-field>
+      </ngx-query>
+      <pre *ngIf="query3">{{query3 | json}}</pre>
+    </div>
+  </div>
   `,
   providers: [
     QueryConfigurationService
@@ -64,10 +74,17 @@ export class DemoComponent {
 
   queryTitle: string = 'Search Orders';
 
-  @ViewChild(QueryComponent)
-  query: QueryComponent;
+  // @ViewChild('query1')
+  // ngxQuery1: QueryComponent;
 
   query1: any;
+  query3: any;
+
+  dropdownItems: any[] = [
+    { key: 'item 1', name: 'Item 1' },
+    { key: 'item 2', name: 'Item 2' },
+    { key: 'item 3', name: 'Item 3' }
+  ];
 
   queryTemplates: any = [{
     name: 'Default',
@@ -75,7 +92,8 @@ export class DemoComponent {
       op: 'and',
       rules: [
         { field: 'field1', op: 'ne', data: 'abcd' },
-        { field: 'field3', op: 'cn' }
+        { field: 'field3', op: 'cn' },
+        { field: 'field4', op: 'eq' }
       ],
       groups: [
         {
@@ -97,7 +115,7 @@ export class DemoComponent {
         {
           op: 'or',
           rules: [
-            { field: 'field2', op: 'eq', data: new Date().toISOString().substring(0, 10) }
+            { field: 'field2', op: 'bt', datas: [new Date().toISOString().substring(0, 10)] }
           ]
         }
       ]
@@ -116,6 +134,21 @@ export class DemoComponent {
     name: 'field3',
     label: 'Address',
     type: 'string'
+  }, {
+    name: 'field4',
+    label: 'Completed',
+    type: 'boolean'
+  }];
+
+  queryTemplates3: any = [{
+    name: 'Default',
+    template: {
+      op: 'and',
+      rules: [
+        { field: 'field1', op: 'ne', data: 'item 2' }
+      ],
+      groups: []
+    }
   }];
 
   constructor(private queryConfig: QueryConfigurationService) {
@@ -127,7 +160,13 @@ export class DemoComponent {
     console.log(query);
   }
 
+  search3(query: any): void {
+    this.query3 = query;
+    console.log(query);
+  }
+
   setChinese(): void {
+
     this.queryTitle = '订单查询';
     this.queryTemplates[0].name = '默认';
     this.queryTemplates[1].name = '月度报告';
@@ -135,6 +174,7 @@ export class DemoComponent {
     this.fields[0].label = '收件人';
     this.fields[1].label = '订单日期';
     this.fields[2].label = '收件地址';
+    this.fields[3].label = '订单完成';
 
     var labels: any = {
       buttons: {
@@ -150,8 +190,17 @@ export class DemoComponent {
       fieldOp: {
         'eq': '等于',
         'ne': '不等于',
+        'lt': '小于',
+        'le': '小于等于',
+        'gt': '大于',
+        'ge': '大于等于',
+        'bw': '开头是',
+        'bn': '开头不是',
+        'ew': '结尾是',
+        'en': '结尾不是',
         'cn': '包含',
-        'en': '不包含'
+        'nc': '不包含',
+        'bt': '介于'
       }
     };
 

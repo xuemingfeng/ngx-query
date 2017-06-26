@@ -71,7 +71,8 @@ export class GroupComponent {
         this.group.rules.push({
             op: 'eq',
             field: field,
-            data: ''
+            data: '',
+            datas: []
         });
     }
 

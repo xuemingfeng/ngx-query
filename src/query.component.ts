@@ -1,6 +1,6 @@
 import {
   Component, NgModule, OnInit, Input, Output, ContentChildren, QueryList,
-  ViewChild, ViewChildren, TemplateRef, EventEmitter
+  ViewChild, ViewChildren, TemplateRef, EventEmitter, ViewEncapsulation
 } from '@angular/core';
 
 import { Field, FieldOpItem, GroupOpItem, GroupOpType, QueryGroup, QueryMode } from './query.types';
@@ -62,27 +62,34 @@ import { QueryConfigurationService } from './services/configuration.service';
   </div>
 
   <!-- Value Input Templates -->
-  <ng-template ngx-query-value-input-template dataType="any" let-rule="rule">
-    <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.data" />
+  <ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex">
+    <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="string" let-rule="rule">
-    <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.data" />
+  <ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex">
+    <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-
-  <ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule">
-    <input type="checkbox" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.data" />
+  <ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+      </label>
+    </div>
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="number" let-rule="rule">
-    <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.data" />
+  <ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">
+    <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="date" let-rule="rule">
-    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.data" />
+  <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">    
+    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule">
-    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.data" />
+  <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">
+    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <!-- Value Input Templates -->
-  `
+  `,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'ngx-query'
+  }
 })
 export class QueryComponent {
 
@@ -101,6 +108,10 @@ export class QueryComponent {
       if (arr.length) {
         // translate them to normal objects
         this.fields = translateTemplates(arr);
+
+        if (this._queryTemplates) {
+          this.queryTemplates = this._queryTemplates;
+        }
       }
     }
   }
@@ -195,7 +206,7 @@ export class QueryComponent {
   }
 
   private translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>): void {
-    if (fields !== null && fields.length > 0 && queryGroup !== null) {
+    if (fields && fields !== null && fields.length > 0 && queryGroup !== null) {
       translateQueryGroup(queryGroup, fields);
     }
   }

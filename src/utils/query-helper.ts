@@ -1,12 +1,26 @@
-import { Field, QueryGroup } from '../query.types';
+import { Field, QueryGroup, Rule } from '../query.types';
 
 export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>): void {
 
   if (queryGroup.rules != null) {
     for (const rule of queryGroup.rules) {
-      if (rule.data) {
-        rule['sdata'] = rule.data;
+
+      if (rule.datas == undefined) {
+        rule.datas = [undefined, undefined];
+        if (rule.data) {
+          rule.datas[0] = rule.data;
+        }
       }
+
+      if (rule.datas) {
+        rule['sdatas'] = rule.datas;
+      }
+
+      // if (rule.data) {
+      //   rule['sdata'] = rule.data;
+      // } else {
+      //   rule.data = rule.datas[0]
+      // }
 
       if (typeof rule.field === 'string') {
         var field: any = fields.find(x => x.name === rule.field);
@@ -39,7 +53,8 @@ export function cloneQueryGroup(source: QueryGroup): QueryGroup {
       result.rules.push({
         field: rule.field,
         op: rule.op,
-        data: rule.data
+        data: rule.data,
+        datas: rule.datas ? rule.datas.map(x => x) : undefined
       });
     }
   }
@@ -66,11 +81,21 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
 
   if (queryGroup.rules && queryGroup.rules.length > 0) {
     for (const rule of queryGroup.rules) {
-      result.rules.push({
+      var rule2: Rule = {
         field: rule.field['name'],
         op: rule.op,
-        data: rule.data
-      });
+        data: undefined,
+        datas: undefined
+      };
+
+      if (rule.datas)
+        if (rule2.op === 'bt') {
+          rule2.datas = rule.datas;
+        } else {
+          rule2.data = rule.datas[0];
+        }
+
+      result.rules.push(rule2);
     }
   }
 

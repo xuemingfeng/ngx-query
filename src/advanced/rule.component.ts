@@ -28,11 +28,21 @@ import { QueryConfigurationService } from '../services/configuration.service';
                 </select>
             </div>
             <div class="col-md-6">
-                <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule}"></ng-container>
+                <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
+                <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op=='bt'">
+                    <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container></li>
+                    <li><span>-</span></li>
+                    <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}"></ng-container></li>
+                </ul>
             </div>
         </div>
     </div>
-    `
+    `,
+    styles: [`
+        .ngx-query-list-inline{
+            margin-bottom: 0;
+        }
+    `]
 })
 export class RuleComponent {
 
@@ -62,7 +72,8 @@ export class RuleComponent {
         this.group.rules.push({
             op: 'eq',
             field: field,
-            data: ''
+            data: '',
+            datas: []
         });
     }
 
@@ -71,6 +82,11 @@ export class RuleComponent {
     }
 
     fieldChanged(): void {
+
+        if (this._rule.datas === undefined) {
+            this._rule.datas = [undefined, undefined];
+        }
+
         var dataType: any = this.rule.field['type'] || DataType.any;
         var dataTypeOp: any = this.config.dataTypeOps.find(x => x.dataType === dataType);
         if (dataTypeOp && dataTypeOp !== null) {

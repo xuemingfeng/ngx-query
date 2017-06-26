@@ -2,6 +2,7 @@ export interface Field {
     name: string;
     label: string;
     type: DataType;
+    custom: any;
     valueInputTemplate: any;
 }
 
@@ -10,7 +11,7 @@ export enum DataType {
     number = 'number' as any,
     boolean = 'boolean' as any,
     date = 'date' as any,
-    dateTime = 'datetime' as any,
+    datetime = 'datetime' as any,
     any = 'any' as any
 }
 
@@ -32,8 +33,17 @@ export enum GroupOpType {
 export enum FieldOpType {
     Equal = 'eq' as any,
     NotEqual = 'ne' as any,
-    Like = 'cn' as any,
-    NotLike = 'en' as any
+    Less = 'lt' as any,
+    LessOrEqual = 'le' as any,
+    Greater = 'gt' as any,
+    GreaterOrEqual = 'ge' as any,
+    BeginWith = 'bw' as any,
+    NotBeginWith = 'bn' as any,
+    EndWith = 'ew' as any,
+    NotEndWith = 'en' as any,
+    Contains = 'cn' as any,
+    NotContains = 'nc' as any,
+    Between = 'bt' as any
 }
 
 export interface QueryGroup {
@@ -46,6 +56,7 @@ export interface Rule {
     field: Field | string;
     op: FieldOpItem | string;
     data: any;
+    datas: any[];
 }
 
 export enum QueryMode {

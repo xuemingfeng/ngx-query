@@ -9,6 +9,7 @@ import { GroupComponent } from './advanced/group.component';
 import { RuleComponent } from './advanced/rule.component';
 
 import { ValueInputTemplateDirective } from './directives/value-input-template.directive';
+import { FieldDirective } from "./directives/field.directive";
 
 import { QueryConfigurationService } from './services/configuration.service';
 
@@ -19,7 +20,8 @@ import { QueryConfigurationService } from './services/configuration.service';
     AdvancedComponent,
     GroupComponent,
     RuleComponent,
-    ValueInputTemplateDirective
+    ValueInputTemplateDirective,
+    FieldDirective
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { QueryConfigurationService } from './services/configuration.service';
   ],
   exports: [
     QueryComponent,
-    ValueInputTemplateDirective
+    ValueInputTemplateDirective,
+    FieldDirective
   ],
   providers: [
     QueryConfigurationService
