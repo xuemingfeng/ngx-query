@@ -18,17 +18,4 @@ after_success:
 addons:
   chrome: stable
 
-env:
-  global:
-    - secure: PpNssK9LEz9DfPR618tB
-    
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: PpNssK9LEz9DfPR618tB
-  local_dir: dist
-  target_branch: gh-pages
-  on:
-    branch: master
-
 dist: trusty
