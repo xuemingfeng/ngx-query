@@ -12,11 +12,18 @@ import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
         <div class="form-group">
           <label class="col-lg-3 control-label">{{rule.field.label}}</label>
           <div class="col-lg-9">
-            <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
+            <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
+              [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
             <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op=='bt'">
-                <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container></li>
+                <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                      [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">
+                    </ng-container>
+                </li>
                 <li><span>-</span></li>
-                <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate" [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}"></ng-container></li>
+                <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                      [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">
+                    </ng-container>
+                </li>
             </ul>
           </div>
         </div>

@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 import { DataType, FieldOpItem, FieldOpType, GroupOpItem, GroupOpType } from '../query.types';
+import { QUERY_DEFAULTS } from '../providers/query-defaults.provider';
 
 @Injectable()
 export class QueryConfigurationService {
@@ -97,8 +98,12 @@ export class QueryConfigurationService {
         ]
     }];
 
-    update(labels: any): void {
-        this.labels = Object.assign({}, this.labels, labels);
+    constructor( @Inject(QUERY_DEFAULTS) private defaultOptions: any) {
+        this.update(defaultOptions);
+    }
+
+    update(options: any): void {
+        this.labels = Object.assign({}, this.labels, options.labels);
 
         for (var groupOp of this.groupOps) {
             groupOp.label = this.labels.groupOp[groupOp.key];

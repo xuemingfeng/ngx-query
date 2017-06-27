@@ -78,7 +78,7 @@ import { QueryConfigurationService } from './services/configuration.service';
   <ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">
     <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">    
+  <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">
     <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">

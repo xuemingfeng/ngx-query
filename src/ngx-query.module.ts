@@ -9,9 +9,11 @@ import { GroupComponent } from './advanced/group.component';
 import { RuleComponent } from './advanced/rule.component';
 
 import { ValueInputTemplateDirective } from './directives/value-input-template.directive';
-import { FieldDirective } from "./directives/field.directive";
+import { FieldDirective } from './directives/field.directive';
 
 import { QueryConfigurationService } from './services/configuration.service';
+
+import { QueryDefaultsProvider } from './providers/query-defaults.provider';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,10 @@ import { QueryConfigurationService } from './services/configuration.service';
 })
 export class NgxQueryModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(options?: any): ModuleWithProviders {
     return {
-      ngModule: NgxQueryModule
+      ngModule: NgxQueryModule,
+      providers: [QueryDefaultsProvider(options)]
     };
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "ngx-query",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "a query panel for Angular 4+",
   "main": "./bundles/ngx-query.umd.js",
   "module": "./index.js",
@@ -33,9 +33,9 @@
   "keywords": [
     "angular4",
     "angular",
-    "Query",
-    "Filter",
-    "Search"
+    "query",
+    "filter",
+    "search"
   ],
   "author": "Joe Xue",
   "license": "MIT",

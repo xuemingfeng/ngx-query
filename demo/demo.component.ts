@@ -176,34 +176,36 @@ export class DemoComponent {
     this.fields[2].label = '收件地址';
     this.fields[3].label = '订单完成';
 
-    var labels: any = {
-      buttons: {
-        'quick': '快速',
-        'advanced': '高级',
-        'reset': '重置',
-        'search': '查询'
-      },
-      groupOp: {
-        'and': '并且',
-        'or': '或者'
-      },
-      fieldOp: {
-        'eq': '等于',
-        'ne': '不等于',
-        'lt': '小于',
-        'le': '小于等于',
-        'gt': '大于',
-        'ge': '大于等于',
-        'bw': '开头是',
-        'bn': '开头不是',
-        'ew': '结尾是',
-        'en': '结尾不是',
-        'cn': '包含',
-        'nc': '不包含',
-        'bt': '介于'
+    var options: any = {
+      labels: {
+        buttons: {
+          'quick': '快速',
+          'advanced': '高级',
+          'reset': '重置',
+          'search': '查询'
+        },
+        groupOp: {
+          'and': '并且',
+          'or': '或者'
+        },
+        fieldOp: {
+          'eq': '等于',
+          'ne': '不等于',
+          'lt': '小于',
+          'le': '小于等于',
+          'gt': '大于',
+          'ge': '大于等于',
+          'bw': '开头是',
+          'bn': '开头不是',
+          'ew': '结尾是',
+          'en': '结尾不是',
+          'cn': '包含',
+          'nc': '不包含',
+          'bt': '介于'
+        }
       }
     };
 
-    this.queryConfig.update(labels);
+    this.queryConfig.update(options);
   }
 }

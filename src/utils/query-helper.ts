@@ -5,7 +5,7 @@ export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>
   if (queryGroup.rules != null) {
     for (const rule of queryGroup.rules) {
 
-      if (rule.datas == undefined) {
+      if (rule.datas === undefined) {
         rule.datas = [undefined, undefined];
         if (rule.data) {
           rule.datas[0] = rule.data;

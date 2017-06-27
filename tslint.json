@@ -57,7 +57,7 @@
       "variable-declaration",
       "member-variable-declaration"
     ],
-    "directive-selector": [true, "attribute", "ngx-query", "kebab-case"],
+    "directive-selector": [true, "", "ngx-query", "kebab-case"],
     "component-selector": [true, "element", "ngx-query", "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
