@@ -25,7 +25,7 @@ env:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: 0b25ee09efffb7dadf2e2460b02cb0d3d4ecdfc9
+  github_token: PpNssK9LEz9DfPR618tB
   local_dir: dist
   target_branch: gh-pages
   on:
