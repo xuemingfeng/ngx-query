@@ -18,4 +18,12 @@ after_success:
 addons:
   chrome: stable
 
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: PpNssK9LEz9DfPR618tB
+  local_dir: dist
+  on:
+    branch: master
+
 dist: trusty
