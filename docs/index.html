@@ -375,7 +375,16 @@
 <li><a href="#license">License</a></li>
 </ul>
 <h2 id="about">About</h2>
-<p>a query panel for Angular 4+</p>
+<p>ngx-query is a component for Angular 4+.
+A person searches data easily through ngx-query.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Quck search panel</li>
+<li>Advanced search panel</li>
+<li>Query templates</li>
+<li>Custom value input box</li>
+<li>Multi-language</li>
+</ul>
 <h2 id="installation">Installation</h2>
 <p>Install through npm:</p>
 <pre class="line-numbers"><code class="language-none">npm install --save ngx-query</code></pre><p>Then include in your apps module:</p>
@@ -384,14 +393,23 @@ import { NgxQueryModule } from &#39;ngx-query&#39;;
 
 &#64;NgModule({
   imports: [
-    NgxQueryModule.forRoot()
+    NgxQueryModule.forRoot({
+      labels:{
+        buttons: {
+          &#39;quick&#39;: &#39;Quick&#39;,
+          ...
+        },
+        ...
+      },
+      ...
+    })
   ]
 })
 export class MyModule {}</code></pre><p>Finally use in one of your apps components:</p>
 <pre class="line-numbers"><code class="language-typescript">import { Component } from &#39;&#64;angular/core&#39;;
 
 &#64;Component({
-  template: &#39;&lt;hello-world&gt;&lt;/hello-world&gt;&#39;
+  template: &#39;&lt;ng-query #ngxQuery [title]=&quot;queryTitle&quot; [fields]=&quot;fields&quot; [queryTemplates]=&quot;queryTemplates&quot; (query)=&quot;search($event)&quot;&gt;&lt;/ng-query&gt;&#39;
 })
 export class MyComponent {}</code></pre><p>You may also find it useful to view the <a href="https://github.com/xuemingfeng/ngx-query/blob/master/demo/demo.component.ts">demo source</a>.</p>
 <h3 id="usage-without-a-module-bundler">Usage without a module bundler</h3>
