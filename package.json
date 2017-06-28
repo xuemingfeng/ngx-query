@@ -12,7 +12,7 @@
     "build:ngc": "ngc -p tsconfig-ngc.json",
     "build:dist": "npm run build:umd && npm run build:ngc",
     "build:clean": "del-cli dist",
-    "build": "npm run release:npm && npm run gh-pages",
+    "build": "npm run build:dist && npm run gh-pages",
     "test": "karma start --single-run && npm run build:dist && npm run build:clean",
     "test:watch": "karma start --auto-watch",
     "commit": "git-cz",
