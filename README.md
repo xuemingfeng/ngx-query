@@ -20,7 +20,16 @@ https://xuemingfeng.github.io/ngx-query/
 
 ## About
 
-a query panel for Angular 4+
+ngx-query is a component for Angular 4+.
+A person searches data easily through ngx-query.
+
+### Features
+- Quck search panel
+- Advanced search panel
+- Query templates
+- Custom value input box
+- Multi-language
+
 
 ## Installation
 
@@ -37,7 +46,16 @@ import { NgxQueryModule } from 'ngx-query';
 
 @NgModule({
   imports: [
-    NgxQueryModule.forRoot()
+    NgxQueryModule.forRoot({
+      labels:{
+        buttons: {
+          'quick': 'Quick',
+          ...
+        },
+        ...
+      },
+      ...
+    })
   ]
 })
 export class MyModule {}
@@ -48,7 +66,7 @@ Finally use in one of your apps components:
 import { Component } from '@angular/core';
 
 @Component({
-  template: '<hello-world></hello-world>'
+  template: '<ng-query #ngxQuery [title]="queryTitle" [fields]="fields" [queryTemplates]="queryTemplates" (query)="search($event)"></ng-query>'
 })
 export class MyComponent {}
 ```
