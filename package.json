@@ -1,6 +1,6 @@
 {
   "name": "ngx-query",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "ngx-query is a component for Angular 4+. A person searches data easily through ngx-query.",
   "main": "./bundles/ngx-query.umd.js",
   "module": "./index.js",

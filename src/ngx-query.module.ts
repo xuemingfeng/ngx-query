@@ -10,6 +10,7 @@ import { RuleComponent } from './advanced/rule.component';
 
 import { ValueInputTemplateDirective } from './directives/value-input-template.directive';
 import { FieldDirective } from './directives/field.directive';
+import { ToolbarTemplateDirective } from './directives/toolbar-template.directive';
 
 import { QueryConfigurationService } from './services/configuration.service';
 
@@ -23,7 +24,8 @@ import { QueryDefaultsProvider } from './providers/query-defaults.provider';
     GroupComponent,
     RuleComponent,
     ValueInputTemplateDirective,
-    FieldDirective
+    FieldDirective,
+    ToolbarTemplateDirective
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { QueryDefaultsProvider } from './providers/query-defaults.provider';
   exports: [
     QueryComponent,
     ValueInputTemplateDirective,
-    FieldDirective
+    FieldDirective,
+    ToolbarTemplateDirective
   ],
   providers: [
     QueryConfigurationService

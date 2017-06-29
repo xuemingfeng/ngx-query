@@ -16,6 +16,7 @@ import { Component, ViewChild } from '@angular/core';
         <li>Advanced search panel</li>
         <li>Query templates</li>
         <li>Custom value input box</li>
+        <li>Custom Toolbar</li>
         <li>Multi-language</li>
       </ul>      
     </div>
@@ -26,6 +27,8 @@ import { Component, ViewChild } from '@angular/core';
   <ngx-query-demo-app-sample2></ngx-query-demo-app-sample2>
 
   <ngx-query-demo-app-sample3></ngx-query-demo-app-sample3>
+
+  <ngx-query-demo-app-sample4></ngx-query-demo-app-sample4>
 
   <p>&nbsp;</p>
   <p>&nbsp;</p>

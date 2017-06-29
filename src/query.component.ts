@@ -1,11 +1,12 @@
 import {
-  Component, NgModule, OnInit, Input, Output, ContentChildren, QueryList,
+  Component, NgModule, OnInit, Input, Output, ContentChildren, ContentChild, QueryList,
   ViewChild, ViewChildren, TemplateRef, EventEmitter, ViewEncapsulation
 } from '@angular/core';
 
 import { Field, FieldOpItem, GroupOpItem, GroupOpType, QueryGroup, QueryMode } from './query.types';
 import { ValueInputTemplateDirective } from './directives/value-input-template.directive';
 import { FieldDirective } from './directives/field.directive';
+import { ToolbarTemplateDirective } from './directives/toolbar-template.directive';
 import { translateTemplates, translateFields } from './utils/field-helper';
 import { translateQueryGroup } from './utils/query-helper';
 import { PlainComponent } from './plain/plain.component';
@@ -32,7 +33,7 @@ import { QueryConfigurationService } from './services/configuration.service';
           </ul>
         </div>
 
-        <div class="btn-group  btn-group-xs">
+        <div class="btn-group  btn-group-xs" *ngIf="showModeButtons">
           <button type="button" class="btn" (click)="showPlainPanel()"
             [ngClass]="{'btn-primary': mode=='plain', 'btn-default': mode!='plain'}">
             <i class="glyphicon glyphicon-filter"></i> {{config.labels.buttons.quick}}</button>
@@ -47,6 +48,9 @@ import { QueryConfigurationService } from './services/configuration.service';
           <button type="button" class="btn btn-primary" (click)="executeQuery()">
             <i class="glyphicon glyphicon-search"></i> {{config.labels.buttons.search}}</button>
         </div>
+
+        <ng-container *ngIf="toolbarTemplate" [ngTemplateOutlet]="toolbarTemplate"
+                    [ngOutletContext]="{toolbar: toolbar}"></ng-container>
 
       </div>
       <div class="clearfix"></div>
@@ -97,6 +101,7 @@ export class QueryComponent {
 
   @Input() title: string;
   @Input() mode: QueryMode = QueryMode.plain;
+  @Input() showModeButtons: boolean = true;
   @ContentChildren(FieldDirective)
   set fieldTemplates(val: QueryList<FieldDirective>) {
     this._fieldTemplates = val;
@@ -140,6 +145,9 @@ export class QueryComponent {
   get queryTemplates(): Array<{ name: string, template: QueryGroup }> {
     return this._queryTemplates;
   }
+  @ContentChild(ToolbarTemplateDirective, { read: TemplateRef })
+  toolbarTemplate: TemplateRef<any>;
+  @Input() toolbar: any;
 
   tempFields: Array<Field>;
   currentQueryTemplate: { name: string, template: QueryGroup };

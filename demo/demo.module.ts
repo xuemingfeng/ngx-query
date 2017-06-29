@@ -7,13 +7,15 @@ import { DemoComponent } from './demo.component';
 import { Sample1Component } from "./sample1.component";
 import { Sample2Component } from "./sample2.component";
 import { Sample3Component } from "./sample3.component";
+import { Sample4Component } from "./sample4.component";
 
 @NgModule({
   declarations: [
     DemoComponent,
     Sample1Component,
     Sample2Component,
-    Sample3Component
+    Sample3Component,
+    Sample4Component
   ],
   imports: [
     BrowserModule,
