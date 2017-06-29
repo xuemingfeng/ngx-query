@@ -28,6 +28,7 @@ A person searches data easily through ngx-query.
 - Advanced search panel
 - Query templates
 - Custom value input box
+- Custom Toolbar
 - Multi-language
 
 
