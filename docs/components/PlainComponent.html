@@ -114,6 +114,9 @@
                                     <a href="../directives/FieldDirective.html" >FieldDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/ValueInputTemplateDirective.html" >ValueInputTemplateDirective</a>
                                 </li>
                         </ul>
@@ -282,6 +285,9 @@
                    >
                                        <li class="link">
                                            <a href="../directives/FieldDirective.html" >FieldDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValueInputTemplateDirective.html" >ValueInputTemplateDirective</a>
@@ -623,7 +629,7 @@ export class PlainComponent {
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="row">  <div class="form-horizontal">    <div class="col-md-6" *ngFor="let rule of rules">      <div class="form-group">        <label class="col-lg-3 control-label">{{rule.field.label}}</label>        <div class="col-lg-9">          <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"            [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>          <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op==\'bt\'">              <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">                  </ng-container>              </li>              <li><span>-</span></li>              <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                    [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">                  </ng-container>              </li>          </ul>        </div>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
-    var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
+    var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'PlainComponent'};
 </script>
 <script src="../js/tree.js"></script>

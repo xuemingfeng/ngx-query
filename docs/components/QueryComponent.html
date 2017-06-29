@@ -114,6 +114,9 @@
                                     <a href="../directives/FieldDirective.html" >FieldDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/ValueInputTemplateDirective.html" >ValueInputTemplateDirective</a>
                                 </li>
                         </ul>
@@ -284,6 +287,9 @@
                                            <a href="../directives/FieldDirective.html" >FieldDirective</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/ValueInputTemplateDirective.html" >ValueInputTemplateDirective</a>
                                        </li>
                                </ul>
@@ -439,7 +445,7 @@
         &lt;/ul&gt;
       &lt;/div&gt;
 
-      &lt;div class&#x3D;&quot;btn-group  btn-group-xs&quot;&gt;
+      &lt;div class&#x3D;&quot;btn-group  btn-group-xs&quot; *ngIf&#x3D;&quot;showModeButtons&quot;&gt;
         &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;showPlainPanel()&quot;
           [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x27;plain&#x27;, &#x27;btn-default&#x27;: mode!&#x3D;&#x27;plain&#x27;}&quot;&gt;
           &lt;i class&#x3D;&quot;glyphicon glyphicon-filter&quot;&gt;&lt;/i&gt; {{config.labels.buttons.quick}}&lt;/button&gt;
@@ -454,6 +460,9 @@
         &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;executeQuery()&quot;&gt;
           &lt;i class&#x3D;&quot;glyphicon glyphicon-search&quot;&gt;&lt;/i&gt; {{config.labels.buttons.search}}&lt;/button&gt;
       &lt;/div&gt;
+
+      &lt;ng-container *ngIf&#x3D;&quot;toolbarTemplate&quot; [ngTemplateOutlet]&#x3D;&quot;toolbarTemplate&quot;
+                  [ngOutletContext]&#x3D;&quot;{toolbar: toolbar}&quot;&gt;&lt;/ng-container&gt;
 
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;clearfix&quot;&gt;&lt;/div&gt;
@@ -514,7 +523,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/query.component.ts:122</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/query.component.ts:127</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -534,7 +543,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/query.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/query.component.ts:103</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -550,7 +559,30 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/query.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/query.component.ts:135</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>showModeButtons</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>boolean</code>
+
+                              </p>
+                            <p>
+                              <em>Default value: </em><code>true</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/query.component.ts:104</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -570,7 +602,27 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/query.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/query.component.ts:102</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>toolbar</code>
+                        </td>
+                        <td class="col-md-10">
+                              <p>
+                                <em>Type:</em>    <code>any</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/query.component.ts:150</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -592,7 +644,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/query.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/query.component.ts:100</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -610,7 +662,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/query.component.ts:159</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/query.component.ts:167</a></div>
                                 </td>
                             </tr>
     
@@ -654,7 +706,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/query.component.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/query.component.ts:153</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -674,7 +726,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/query.component.ts:126</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/query.component.ts:131</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -694,7 +746,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/query.component.ts:118</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/query.component.ts:123</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -714,7 +766,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/query.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/query.component.ts:145</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -734,7 +786,32 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/query.component.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/query.component.ts:152</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> toolbarTemplate</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>toolbarTemplate:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/query.component.ts:149</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -745,13 +822,14 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import {
-  Component, NgModule, OnInit, Input, Output, ContentChildren, QueryList,
+  Component, NgModule, OnInit, Input, Output, ContentChildren, ContentChild, QueryList,
   ViewChild, ViewChildren, TemplateRef, EventEmitter, ViewEncapsulation
 } from &#x27;@angular/core&#x27;;
 
 import { Field, FieldOpItem, GroupOpItem, GroupOpType, QueryGroup, QueryMode } from &#x27;./query.types&#x27;;
 import { ValueInputTemplateDirective } from &#x27;./directives/value-input-template.directive&#x27;;
 import { FieldDirective } from &#x27;./directives/field.directive&#x27;;
+import { ToolbarTemplateDirective } from &#x27;./directives/toolbar-template.directive&#x27;;
 import { translateTemplates, translateFields } from &#x27;./utils/field-helper&#x27;;
 import { translateQueryGroup } from &#x27;./utils/query-helper&#x27;;
 import { PlainComponent } from &#x27;./plain/plain.component&#x27;;
@@ -778,7 +856,7 @@ import { QueryConfigurationService } from &#x27;./services/configuration.service
           &lt;/ul&gt;
         &lt;/div&gt;
 
-        &lt;div class&#x3D;&quot;btn-group  btn-group-xs&quot;&gt;
+        &lt;div class&#x3D;&quot;btn-group  btn-group-xs&quot; *ngIf&#x3D;&quot;showModeButtons&quot;&gt;
           &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;showPlainPanel()&quot;
             [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x27;plain&#x27;, &#x27;btn-default&#x27;: mode!&#x3D;&#x27;plain&#x27;}&quot;&gt;
             &lt;i class&#x3D;&quot;glyphicon glyphicon-filter&quot;&gt;&lt;/i&gt; {{config.labels.buttons.quick}}&lt;/button&gt;
@@ -793,6 +871,9 @@ import { QueryConfigurationService } from &#x27;./services/configuration.service
           &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;executeQuery()&quot;&gt;
             &lt;i class&#x3D;&quot;glyphicon glyphicon-search&quot;&gt;&lt;/i&gt; {{config.labels.buttons.search}}&lt;/button&gt;
         &lt;/div&gt;
+
+        &lt;ng-container *ngIf&#x3D;&quot;toolbarTemplate&quot; [ngTemplateOutlet]&#x3D;&quot;toolbarTemplate&quot;
+                    [ngOutletContext]&#x3D;&quot;{toolbar: toolbar}&quot;&gt;&lt;/ng-container&gt;
 
       &lt;/div&gt;
       &lt;div class&#x3D;&quot;clearfix&quot;&gt;&lt;/div&gt;
@@ -843,6 +924,7 @@ export class QueryComponent {
 
   @Input() title: string;
   @Input() mode: QueryMode &#x3D; QueryMode.plain;
+  @Input() showModeButtons: boolean &#x3D; true;
   @ContentChildren(FieldDirective)
   set fieldTemplates(val: QueryList&lt;FieldDirective&gt;) {
     this._fieldTemplates &#x3D; val;
@@ -886,6 +968,9 @@ export class QueryComponent {
   get queryTemplates(): Array&lt;{ name: string, template: QueryGroup }&gt; {
     return this._queryTemplates;
   }
+  @ContentChild(ToolbarTemplateDirective, { read: TemplateRef })
+  toolbarTemplate: TemplateRef&lt;any&gt;;
+  @Input() toolbar: any;
 
   tempFields: Array&lt;Field&gt;;
   currentQueryTemplate: { name: string, template: QueryGroup };
@@ -984,9 +1069,9 @@ export class QueryComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="panel panel-default">  <div class="panel-heading">    <div class="pull-left">      <h3 class="panel-title">{{title}}</h3>    </div>    <div class="btn-toolbar pull-right">      <div class="btn-group btn-group-xs" *ngIf="queryTemplates.length>1">        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          <i class="glyphicon glyphicon-retweet"></i> {{currentQueryTemplate.name}}          <span class="caret"></span>        </button>        <ul class="dropdown-menu">          <li *ngFor="let item of queryTemplates"><a href="javascript:" (click)="queryTemplateChanged(item)">{{item.name}}</a></li>        </ul>      </div>      <div class="btn-group  btn-group-xs">        <button type="button" class="btn" (click)="showPlainPanel()"          [ngClass]="{\'btn-primary\': mode==\'plain\', \'btn-default\': mode!=\'plain\'}">          <i class="glyphicon glyphicon-filter"></i> {{config.labels.buttons.quick}}</button>        <button type="button" class="btn" (click)="showAdvancedPanel()"          [ngClass]="{\'btn-primary\': mode==\'advanced\', \'btn-default\': mode!=\'advanced\'}">          <i class="glyphicon glyphicon-fire"></i> {{config.labels.buttons.advanced}}</button>      </div>      <div class="btn-group btn-group-xs">        <button type="button" class="btn btn-default" (click)="resetQueryTemplate()">          <i class="glyphicon glyphicon-repeat"></i> {{config.labels.buttons.reset}}</button>        <button type="button" class="btn btn-primary" (click)="executeQuery()">          <i class="glyphicon glyphicon-search"></i> {{config.labels.buttons.search}}</button>      </div>    </div>    <div class="clearfix"></div>  </div>  <div class="panel-body">    <ngx-query-plain [class.hide]="mode!=\'plain\'" #planQuery      [queryTemplate]="currentQueryTemplate.template">    </ngx-query-plain>    <ngx-query-advanced [class.hide]="mode!=\'advanced\'" #advancedQuery      [queryTemplate]="currentQueryTemplate.template" [fields]="tempFields">    </ngx-query-advanced>  </div></div><!-- Value Input Templates --><ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex">  <div class="checkbox">    <label>      <input type="checkbox" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />    </label>  </div></ng-template><ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">  <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><!-- Value Input Templates --></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="panel panel-default">  <div class="panel-heading">    <div class="pull-left">      <h3 class="panel-title">{{title}}</h3>    </div>    <div class="btn-toolbar pull-right">      <div class="btn-group btn-group-xs" *ngIf="queryTemplates.length>1">        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          <i class="glyphicon glyphicon-retweet"></i> {{currentQueryTemplate.name}}          <span class="caret"></span>        </button>        <ul class="dropdown-menu">          <li *ngFor="let item of queryTemplates"><a href="javascript:" (click)="queryTemplateChanged(item)">{{item.name}}</a></li>        </ul>      </div>      <div class="btn-group  btn-group-xs" *ngIf="showModeButtons">        <button type="button" class="btn" (click)="showPlainPanel()"          [ngClass]="{\'btn-primary\': mode==\'plain\', \'btn-default\': mode!=\'plain\'}">          <i class="glyphicon glyphicon-filter"></i> {{config.labels.buttons.quick}}</button>        <button type="button" class="btn" (click)="showAdvancedPanel()"          [ngClass]="{\'btn-primary\': mode==\'advanced\', \'btn-default\': mode!=\'advanced\'}">          <i class="glyphicon glyphicon-fire"></i> {{config.labels.buttons.advanced}}</button>      </div>      <div class="btn-group btn-group-xs">        <button type="button" class="btn btn-default" (click)="resetQueryTemplate()">          <i class="glyphicon glyphicon-repeat"></i> {{config.labels.buttons.reset}}</button>        <button type="button" class="btn btn-primary" (click)="executeQuery()">          <i class="glyphicon glyphicon-search"></i> {{config.labels.buttons.search}}</button>      </div>      <ng-container *ngIf="toolbarTemplate" [ngTemplateOutlet]="toolbarTemplate"                  [ngOutletContext]="{toolbar: toolbar}"></ng-container>    </div>    <div class="clearfix"></div>  </div>  <div class="panel-body">    <ngx-query-plain [class.hide]="mode!=\'plain\'" #planQuery      [queryTemplate]="currentQueryTemplate.template">    </ngx-query-plain>    <ngx-query-advanced [class.hide]="mode!=\'advanced\'" #advancedQuery      [queryTemplate]="currentQueryTemplate.template" [fields]="tempFields">    </ngx-query-advanced>  </div></div><!-- Value Input Templates --><ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex">  <div class="checkbox">    <label>      <input type="checkbox" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />    </label>  </div></ng-template><ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">  <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><!-- Value Input Templates --></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
-    var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
+    var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'QueryComponent'};
 </script>
 <script src="../js/tree.js"></script>

@@ -114,6 +114,9 @@
                                     <a href="../directives/FieldDirective.html" >FieldDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/ValueInputTemplateDirective.html" >ValueInputTemplateDirective</a>
                                 </li>
                         </ul>
@@ -284,6 +287,9 @@
                                            <a href="../directives/FieldDirective.html" >FieldDirective</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/ValueInputTemplateDirective.html" >ValueInputTemplateDirective</a>
                                        </li>
                                </ul>
@@ -408,6 +414,9 @@
                             <li class="list-group-item">
                                 <a href="../directives/FieldDirective.html">FieldDirective</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="../directives/ToolbarTemplateDirective.html">ToolbarTemplateDirective</a>
+                            </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -430,6 +439,9 @@
                             <li class="list-group-item">
                                     <a href="../directives/FieldDirective.html" >FieldDirective</a>
                             </li>
+                            <li class="list-group-item">
+                                    <a href="../directives/ToolbarTemplateDirective.html" >ToolbarTemplateDirective</a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -448,6 +460,7 @@ import { RuleComponent } from &#x27;./advanced/rule.component&#x27;;
 
 import { ValueInputTemplateDirective } from &#x27;./directives/value-input-template.directive&#x27;;
 import { FieldDirective } from &#x27;./directives/field.directive&#x27;;
+import { ToolbarTemplateDirective } from &#x27;./directives/toolbar-template.directive&#x27;;
 
 import { QueryConfigurationService } from &#x27;./services/configuration.service&#x27;;
 
@@ -461,7 +474,8 @@ import { QueryDefaultsProvider } from &#x27;./providers/query-defaults.provider&
     GroupComponent,
     RuleComponent,
     ValueInputTemplateDirective,
-    FieldDirective
+    FieldDirective,
+    ToolbarTemplateDirective
   ],
   imports: [
     CommonModule,
@@ -470,7 +484,8 @@ import { QueryDefaultsProvider } from &#x27;./providers/query-defaults.provider&
   exports: [
     QueryComponent,
     ValueInputTemplateDirective,
-    FieldDirective
+    FieldDirective,
+    ToolbarTemplateDirective
   ],
   providers: [
     QueryConfigurationService
