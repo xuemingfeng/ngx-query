@@ -22,8 +22,8 @@ import { QueryConfigurationService } from '../src/services/configuration.service
         </ngx-query-field>
         <ng-template ngx-query-toolbar-template>
           <div class="btn-group btn-group-xs">
-            <button class="btn btn-default" (click)="toolbar.action1()">Action 1</button>
-            <button class="btn btn-default" (click)="toolbar.action2()">Action 2</button>
+            <button class="btn btn-default" (click)="action1()">Action 1</button>
+            <button class="btn btn-default" (click)="action2()">Action 2</button>
           </div>
         </ng-template>
       </ngx-query>

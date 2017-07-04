@@ -35,10 +35,10 @@ import { QueryConfigurationService } from './services/configuration.service';
 
         <div class="btn-group  btn-group-xs" *ngIf="showModeButtons">
           <button type="button" class="btn" (click)="showPlainPanel()"
-            [ngClass]="{'btn-primary': mode=='plain', 'btn-default': mode!='plain'}">
+            [ngClass]="{'btn-primary': mode===plainMode, 'btn-default': mode!==plainMode}">
             <i class="glyphicon glyphicon-filter"></i> {{config.labels.buttons.quick}}</button>
           <button type="button" class="btn" (click)="showAdvancedPanel()"
-            [ngClass]="{'btn-primary': mode=='advanced', 'btn-default': mode!='advanced'}">
+            [ngClass]="{'btn-primary': mode===advancedMode, 'btn-default': mode!==advancedMode}">
             <i class="glyphicon glyphicon-fire"></i> {{config.labels.buttons.advanced}}</button>
         </div>
 
@@ -56,10 +56,10 @@ import { QueryConfigurationService } from './services/configuration.service';
       <div class="clearfix"></div>
     </div>
     <div class="panel-body">
-      <ngx-query-plain [class.hide]="mode!='plain'" #planQuery
+      <ngx-query-plain [class.hide]="mode!==plainMode" #planQuery
         [queryTemplate]="currentQueryTemplate.template">
       </ngx-query-plain>
-      <ngx-query-advanced [class.hide]="mode!='advanced'" #advancedQuery
+      <ngx-query-advanced [class.hide]="mode!==advancedMode" #advancedQuery
         [queryTemplate]="currentQueryTemplate.template" [fields]="tempFields">
       </ngx-query-advanced>
     </div>
@@ -151,6 +151,8 @@ export class QueryComponent {
 
   tempFields: Array<Field>;
   currentQueryTemplate: { name: string, template: QueryGroup };
+  readonly plainMode: QueryMode = QueryMode.plain;
+  readonly advancedMode: QueryMode = QueryMode.advanced;
 
   private _fieldTemplates: QueryList<FieldDirective>;
   private _valueInputTemplates: Array<ValueInputTemplateDirective>;
