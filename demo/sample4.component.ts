@@ -9,7 +9,7 @@ import { QueryConfigurationService } from '../src/services/configuration.service
     <div class="col-md-12">
       <h2>Sample 4 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample4.component.ts" class="btn btn-xs btn-primary" target="_blank">Source</a></h2>
       <p>Custom Toolbar</p>
-      <ngx-query #ngxQuery [title]="queryTitle" (query)="search($event)" 
+      <ngx-query #ngxQuery [title]="queryTitle" (query)="search($event)" (reset)="reset($event)"
             [queryTemplates]="queryTemplates" [toolbar]="toolbar" [showModeButtons]="false">
         <ngx-query-field [name]="'field1'" [label]="'Full Name'" [type]="'string'" [custom]="dropdownItems">
           <ng-template ngx-query-value-input-template let-rule="rule" let-dataIndex="dataIndex" let-options="custom">
@@ -68,6 +68,11 @@ export class Sample4Component {
 
   search(query: any): void {
     this.query = query;
+  }
+
+  reset(args: any): void {
+    // args.queryTemplate.template = this.queryTemplates[1].template;
+    console.log('reset', args);
   }
 
   action1(): void {

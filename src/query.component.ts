@@ -98,6 +98,7 @@ import { QueryConfigurationService } from './services/configuration.service';
 export class QueryComponent {
 
   @Output() query: EventEmitter<any> = new EventEmitter();
+  @Output() reset: EventEmitter<any> = new EventEmitter();
 
   @Input() title: string;
   @Input() mode: QueryMode = QueryMode.plain;
@@ -197,6 +198,13 @@ export class QueryComponent {
   }
 
   resetQueryTemplate(): void {
+
+    const args: any = {
+      queryTemplate: this.currentQueryTemplate
+    };
+
+    this.reset.emit(args);
+
     if (this.mode === QueryMode.plain) {
       this._plainQuery.reset();
     }
