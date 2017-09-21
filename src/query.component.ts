@@ -140,7 +140,9 @@ export class QueryComponent {
       this.translateQueryGroup(queryTemplate.template, this.tempFields);
     });
 
-    this.queryTemplateChanged(this._queryTemplates[0]);
+    if (this.tempFields && this.tempFields.length > 0) {
+      this.queryTemplateChanged(this._queryTemplates[0]);
+    }
   }
   get queryTemplates(): Array<{ name: string, template: QueryGroup }> {
     return this._queryTemplates;
