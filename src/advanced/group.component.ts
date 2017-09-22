@@ -7,22 +7,20 @@ import { QueryConfigurationService } from '../services/configuration.service';
     selector: 'ngx-query-group',
     template:
     `
-    <div class="col-md-12">
+    <div class="col-md-12 mb-2">
         <div class="form-group">
-            <div class="col-md-3">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default"
-                            (click)="addGroup()"><i class="glyphicon glyphicon-plus"></i> {{'{}'}}</button>
-                        <button type="button" class="btn btn-default"
-                            (click)="addRule()"><i class="glyphicon glyphicon-plus"></i></button>
-                        <button type="button" class="btn btn-default" *ngIf="canRemove"
-                            (click)="removeGroup()"><i class="glyphicon glyphicon-minus"></i></button>
-                    </div>
-                    <select class="form-control" [(ngModel)]="group.op">
-                        <option *ngFor="let item of groupOps" [ngValue]="item.key">{{item.label}}</option>
-                    </select>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        (click)="addGroup()"><i class="fa fa-plus"></i> {{'{}'}}</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        (click)="addRule()"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" *ngIf="canRemove"
+                        (click)="removeGroup()"><i class="fa fa-minus"></i></button>
                 </div>
+                <select class="form-control form-control-sm border border-secondary" [(ngModel)]="group.op">
+                    <option *ngFor="let item of groupOps" [ngValue]="item.key">{{item.label}}</option>
+                </select>
             </div>
         </div>
     </div>

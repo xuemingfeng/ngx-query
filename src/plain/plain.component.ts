@@ -6,12 +6,11 @@ import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
 @Component({
   selector: 'ngx-query-plain',
   template: `
-  <div class="row">
-    <div class="form-horizontal">
-      <div class="col-md-6" *ngFor="let rule of rules">
-        <div class="form-group">
-          <label class="col-lg-3 control-label">{{rule.field.label}}</label>
-          <div class="col-lg-9">
+    <div class="form-row">
+      <div class="form-group col-md-6" *ngFor="let rule of rules">
+        <div class="row">
+          <label class="col-md-3 col-form-label text-right">{{rule.field.label}}</label>
+          <div class="col-md-9">
             <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
               [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
             <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op=='bt'">
@@ -29,7 +28,6 @@ import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
         </div>
       </div>
     </div>
-  </div>
   `
 })
 export class PlainComponent {

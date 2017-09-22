@@ -7,7 +7,7 @@ import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
   selector: 'ngx-query-advanced',
   template: `
   <div class="row">
-    <div class="form-horizontal">
+    <div class="form-inline">
       <ngx-query-group [group]="tempQueryTemplate" [fields]="fields"></ngx-query-group>
     </div>
   </div>

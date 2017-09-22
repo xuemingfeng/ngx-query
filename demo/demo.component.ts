@@ -30,10 +30,7 @@ import { Component, ViewChild } from '@angular/core';
 
   <ngx-query-demo-app-sample4></ngx-query-demo-app-sample4>
 
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+  <div class="mb-5"></div>
   `
 })
 export class DemoComponent {

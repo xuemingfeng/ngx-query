@@ -7,40 +7,35 @@ import { QueryConfigurationService } from '../services/configuration.service';
     selector: 'ngx-query-rule',
     template:
     `
-    <div class="col-md-12">
+    <div class="col-md-12 mb-2">
         <div class="form-group">
-            <div class="col-md-3">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default"
-                            (click)="addRule()"><i class="glyphicon glyphicon-plus"></i></button>
-                        <button type="button" class="btn btn-default"
-                            (click)="removeRule()"><i class="glyphicon glyphicon-minus"></i></button>
-                    </div>
-                    <select class="form-control" [(ngModel)]="rule.field" (change)="fieldChanged()">
-                        <option *ngFor="let field of fields" [ngValue]="field" [innerHtml]="field.label"></option>
-                    </select>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        (click)="addRule()"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        (click)="removeRule()"><i class="fa fa-minus"></i></button>
                 </div>
-            </div>
-            <div class="col-md-2">
-                <select class="form-control" [(ngModel)]="rule.op">
-                    <option *ngFor="let item of fieldOps" [(ngValue)]="item.key" [innerHtml]="item.label"></option>
+                <select class="form-control form-control-sm border border-secondary" [(ngModel)]="rule.field" (change)="fieldChanged()">
+                    <option *ngFor="let field of fields" [ngValue]="field" [innerHtml]="field.label"></option>
                 </select>
             </div>
-            <div class="col-md-6">
-                <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
-                <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op=='bt'">
-                    <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                            [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">
-                        </ng-container>
-                    </li>
-                    <li><span>-</span></li>
-                    <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                            [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">
-                        </ng-container>
-                    </li>
-                </ul>
+
+            <select class="form-control form-control-sm border border-secondary ml-1 mr-1" [(ngModel)]="rule.op">
+                <option *ngFor="let item of fieldOps" [(ngValue)]="item.key" [innerHtml]="item.label"></option>
+            </select>
+
+            <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
+
+            <div *ngIf="rule.op=='bt'">
+                <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">
+                </ng-container>
+                <span>-</span>
+                <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                    [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">
+                </ng-container>
             </div>
         </div>
     </div>

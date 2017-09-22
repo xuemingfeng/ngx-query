@@ -5,13 +5,13 @@ import { QueryConfigurationService } from '../src/services/configuration.service
 @Component({
   selector: 'ngx-query-demo-app-sample3',
   template: `
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-12">
-      <h2>Sample 3 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample3.component.ts" class="btn btn-xs btn-primary" target="_blank">Source</a></h2>
+      <h2>Sample 3 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample3.component.ts" class="btn btn-sm btn-primary" target="_blank">Source</a></h2>
     </div>
     <div class="col-md-12">
       <p>
-        <button type="button" class="btn btn-primary" (click)="setChinese()">中文(Chinese)</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="setChinese()">中文(Chinese)</button>
       </p>
       <p>Option 1: Change the configuration via <code>QueryConfigurationService</code>.</p>
     </div>
