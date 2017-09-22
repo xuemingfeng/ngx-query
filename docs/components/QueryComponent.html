@@ -428,37 +428,38 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;panel panel-default&quot;&gt;
-  &lt;div class&#x3D;&quot;panel-heading&quot;&gt;
-    &lt;div class&#x3D;&quot;pull-left&quot;&gt;
-      &lt;h3 class&#x3D;&quot;panel-title&quot;&gt;{{title}}&lt;/h3&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card&quot;&gt;
+  &lt;div class&#x3D;&quot;card-header&quot;&gt;
+    &lt;div class&#x3D;&quot;float-left&quot;&gt;
+      &lt;h5&gt;{{title}}&lt;/h5&gt;
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;btn-toolbar pull-right&quot;&gt;
+    &lt;div class&#x3D;&quot;btn-toolbar float-right&quot;&gt;
 
-      &lt;div class&#x3D;&quot;btn-group btn-group-xs&quot; *ngIf&#x3D;&quot;queryTemplates.length&gt;1&quot;&gt;
-        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default dropdown-toggle&quot; data-toggle&#x3D;&quot;dropdown&quot; aria-haspopup&#x3D;&quot;true&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
-          &lt;i class&#x3D;&quot;glyphicon glyphicon-retweet&quot;&gt;&lt;/i&gt; {{currentQueryTemplate.name}}
+      &lt;div class&#x3D;&quot;btn-group btn-group-sm ml-1&quot; *ngIf&#x3D;&quot;queryTemplates.length&gt;1&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary dropdown-toggle&quot; data-toggle&#x3D;&quot;dropdown&quot; aria-haspopup&#x3D;&quot;true&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
+          &lt;i class&#x3D;&quot;fa fa-retweet&quot;&gt;&lt;/i&gt; {{currentQueryTemplate.name}}
           &lt;span class&#x3D;&quot;caret&quot;&gt;&lt;/span&gt;
         &lt;/button&gt;
-        &lt;ul class&#x3D;&quot;dropdown-menu&quot;&gt;
-          &lt;li *ngFor&#x3D;&quot;let item of queryTemplates&quot;&gt;&lt;a href&#x3D;&quot;javascript:&quot; (click)&#x3D;&quot;queryTemplateChanged(item)&quot;&gt;{{item.name}}&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
+        &lt;div class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;btnGroupDrop1&quot;&gt;
+          &lt;a *ngFor&#x3D;&quot;let item of queryTemplates&quot; href&#x3D;&quot;javascript:&quot;
+            class&#x3D;&quot;dropdown-item&quot; (click)&#x3D;&quot;queryTemplateChanged(item)&quot;&gt;{{item.name}}&lt;/a&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
 
-      &lt;div class&#x3D;&quot;btn-group  btn-group-xs&quot; *ngIf&#x3D;&quot;showModeButtons&quot;&gt;
+      &lt;div class&#x3D;&quot;btn-group btn-group-sm ml-1&quot; *ngIf&#x3D;&quot;showModeButtons&quot;&gt;
         &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;showPlainPanel()&quot;
-          [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x27;plain&#x27;, &#x27;btn-default&#x27;: mode!&#x3D;&#x27;plain&#x27;}&quot;&gt;
-          &lt;i class&#x3D;&quot;glyphicon glyphicon-filter&quot;&gt;&lt;/i&gt; {{config.labels.buttons.quick}}&lt;/button&gt;
+          [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x3D;plainMode, &#x27;btn-secondary&#x27;: mode!&#x3D;&#x3D;plainMode}&quot;&gt;
+          &lt;i class&#x3D;&quot;fa fa-filter&quot;&gt;&lt;/i&gt; {{config.labels.buttons.quick}}&lt;/button&gt;
         &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;showAdvancedPanel()&quot;
-          [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x27;advanced&#x27;, &#x27;btn-default&#x27;: mode!&#x3D;&#x27;advanced&#x27;}&quot;&gt;
-          &lt;i class&#x3D;&quot;glyphicon glyphicon-fire&quot;&gt;&lt;/i&gt; {{config.labels.buttons.advanced}}&lt;/button&gt;
+          [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x3D;advancedMode, &#x27;btn-secondary&#x27;: mode!&#x3D;&#x3D;advancedMode}&quot;&gt;
+          &lt;i class&#x3D;&quot;fa fa-fire&quot;&gt;&lt;/i&gt; {{config.labels.buttons.advanced}}&lt;/button&gt;
       &lt;/div&gt;
 
-      &lt;div class&#x3D;&quot;btn-group btn-group-xs&quot;&gt;
-        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot; (click)&#x3D;&quot;resetQueryTemplate()&quot;&gt;
-          &lt;i class&#x3D;&quot;glyphicon glyphicon-repeat&quot;&gt;&lt;/i&gt; {{config.labels.buttons.reset}}&lt;/button&gt;
+      &lt;div class&#x3D;&quot;btn-group btn-group-sm ml-1&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;resetQueryTemplate()&quot;&gt;
+          &lt;i class&#x3D;&quot;fa fa-repeat&quot;&gt;&lt;/i&gt; {{config.labels.buttons.reset}}&lt;/button&gt;
         &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;executeQuery()&quot;&gt;
-          &lt;i class&#x3D;&quot;glyphicon glyphicon-search&quot;&gt;&lt;/i&gt; {{config.labels.buttons.search}}&lt;/button&gt;
+          &lt;i class&#x3D;&quot;fa fa-search&quot;&gt;&lt;/i&gt; {{config.labels.buttons.search}}&lt;/button&gt;
       &lt;/div&gt;
 
       &lt;ng-container *ngIf&#x3D;&quot;toolbarTemplate&quot; [ngTemplateOutlet]&#x3D;&quot;toolbarTemplate&quot;
@@ -467,11 +468,11 @@
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;clearfix&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class&#x3D;&quot;panel-body&quot;&gt;
-    &lt;ngx-query-plain [class.hide]&#x3D;&quot;mode!&#x3D;&#x27;plain&#x27;&quot; #planQuery
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;ngx-query-plain [hidden]&#x3D;&quot;mode!&#x3D;&#x3D;plainMode&quot; #planQuery
       [queryTemplate]&#x3D;&quot;currentQueryTemplate.template&quot;&gt;
     &lt;/ngx-query-plain&gt;
-    &lt;ngx-query-advanced [class.hide]&#x3D;&quot;mode!&#x3D;&#x27;advanced&#x27;&quot; #advancedQuery
+    &lt;ngx-query-advanced [hidden]&#x3D;&quot;mode!&#x3D;&#x3D;advancedMode&quot; #advancedQuery
       [queryTemplate]&#x3D;&quot;currentQueryTemplate.template&quot; [fields]&#x3D;&quot;tempFields&quot;&gt;
     &lt;/ngx-query-advanced&gt;
   &lt;/div&gt;
@@ -479,26 +480,25 @@
 
 &lt;!-- Value Input Templates --&gt;
 &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;any&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-  &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+  &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;string&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-  &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+  &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;boolean&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-  &lt;div class&#x3D;&quot;checkbox&quot;&gt;
-    &lt;label&gt;
-      &lt;input type&#x3D;&quot;checkbox&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
-    &lt;/label&gt;
-  &lt;/div&gt;
+  &lt;label class&#x3D;&quot;custom-control custom-checkbox&quot;&gt;
+    &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+    &lt;span class&#x3D;&quot;custom-control-indicator&quot;&gt;&lt;/span&gt;
+  &lt;/label&gt;
 &lt;/ng-template&gt;
 &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;number&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-  &lt;input type&#x3D;&quot;number&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+  &lt;input type&#x3D;&quot;number&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;ng-template ngx-query-value-input-template  dataType&#x3D;&quot;date&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-  &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+  &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;datetime&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-  &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+  &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
 &lt;/ng-template&gt;
 &lt;!-- Value Input Templates --&gt;
 </code></pre></td>
@@ -523,7 +523,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/query.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/query.component.ts:128</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -543,7 +543,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/query.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/query.component.ts:104</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -559,7 +559,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/query.component.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/query.component.ts:136</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -582,7 +582,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/query.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/query.component.ts:105</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -602,7 +602,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/query.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/query.component.ts:103</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -622,7 +622,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/query.component.ts:150</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/query.component.ts:153</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -649,6 +649,24 @@
                             </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>reset</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code>any</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/query.component.ts:101</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -662,7 +680,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/query.component.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/query.component.ts:172</a></div>
                                 </td>
                             </tr>
     
@@ -676,6 +694,26 @@
             <h3 id="inputs">
                 Properties
             </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier"></span> advancedMode</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-"></span><code>advancedMode:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/query.component.ts:158</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -706,7 +744,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/query.component.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/query.component.ts:156</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -726,7 +764,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/query.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/query.component.ts:132</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -746,7 +784,27 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/query.component.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/query.component.ts:124</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier"></span> plainMode</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-"></span><code>plainMode:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/query.component.ts:157</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -766,7 +824,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/query.component.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/query.component.ts:148</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -786,7 +844,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/query.component.ts:152</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/query.component.ts:155</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -811,7 +869,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/query.component.ts:149</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/query.component.ts:152</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -839,37 +897,38 @@ import { QueryConfigurationService } from &#x27;./services/configuration.service
 @Component({
   selector: &#x27;ngx-query&#x27;,
   template: &#x60;
-  &lt;div class&#x3D;&quot;panel panel-default&quot;&gt;
-    &lt;div class&#x3D;&quot;panel-heading&quot;&gt;
-      &lt;div class&#x3D;&quot;pull-left&quot;&gt;
-        &lt;h3 class&#x3D;&quot;panel-title&quot;&gt;{{title}}&lt;/h3&gt;
+  &lt;div class&#x3D;&quot;card&quot;&gt;
+    &lt;div class&#x3D;&quot;card-header&quot;&gt;
+      &lt;div class&#x3D;&quot;float-left&quot;&gt;
+        &lt;h5&gt;{{title}}&lt;/h5&gt;
       &lt;/div&gt;
-      &lt;div class&#x3D;&quot;btn-toolbar pull-right&quot;&gt;
+      &lt;div class&#x3D;&quot;btn-toolbar float-right&quot;&gt;
 
-        &lt;div class&#x3D;&quot;btn-group btn-group-xs&quot; *ngIf&#x3D;&quot;queryTemplates.length&gt;1&quot;&gt;
-          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default dropdown-toggle&quot; data-toggle&#x3D;&quot;dropdown&quot; aria-haspopup&#x3D;&quot;true&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
-            &lt;i class&#x3D;&quot;glyphicon glyphicon-retweet&quot;&gt;&lt;/i&gt; {{currentQueryTemplate.name}}
+        &lt;div class&#x3D;&quot;btn-group btn-group-sm ml-1&quot; *ngIf&#x3D;&quot;queryTemplates.length&gt;1&quot;&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary dropdown-toggle&quot; data-toggle&#x3D;&quot;dropdown&quot; aria-haspopup&#x3D;&quot;true&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
+            &lt;i class&#x3D;&quot;fa fa-retweet&quot;&gt;&lt;/i&gt; {{currentQueryTemplate.name}}
             &lt;span class&#x3D;&quot;caret&quot;&gt;&lt;/span&gt;
           &lt;/button&gt;
-          &lt;ul class&#x3D;&quot;dropdown-menu&quot;&gt;
-            &lt;li *ngFor&#x3D;&quot;let item of queryTemplates&quot;&gt;&lt;a href&#x3D;&quot;javascript:&quot; (click)&#x3D;&quot;queryTemplateChanged(item)&quot;&gt;{{item.name}}&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
+          &lt;div class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;btnGroupDrop1&quot;&gt;
+            &lt;a *ngFor&#x3D;&quot;let item of queryTemplates&quot; href&#x3D;&quot;javascript:&quot;
+              class&#x3D;&quot;dropdown-item&quot; (click)&#x3D;&quot;queryTemplateChanged(item)&quot;&gt;{{item.name}}&lt;/a&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
 
-        &lt;div class&#x3D;&quot;btn-group  btn-group-xs&quot; *ngIf&#x3D;&quot;showModeButtons&quot;&gt;
+        &lt;div class&#x3D;&quot;btn-group btn-group-sm ml-1&quot; *ngIf&#x3D;&quot;showModeButtons&quot;&gt;
           &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;showPlainPanel()&quot;
-            [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x27;plain&#x27;, &#x27;btn-default&#x27;: mode!&#x3D;&#x27;plain&#x27;}&quot;&gt;
-            &lt;i class&#x3D;&quot;glyphicon glyphicon-filter&quot;&gt;&lt;/i&gt; {{config.labels.buttons.quick}}&lt;/button&gt;
+            [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x3D;plainMode, &#x27;btn-secondary&#x27;: mode!&#x3D;&#x3D;plainMode}&quot;&gt;
+            &lt;i class&#x3D;&quot;fa fa-filter&quot;&gt;&lt;/i&gt; {{config.labels.buttons.quick}}&lt;/button&gt;
           &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;showAdvancedPanel()&quot;
-            [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x27;advanced&#x27;, &#x27;btn-default&#x27;: mode!&#x3D;&#x27;advanced&#x27;}&quot;&gt;
-            &lt;i class&#x3D;&quot;glyphicon glyphicon-fire&quot;&gt;&lt;/i&gt; {{config.labels.buttons.advanced}}&lt;/button&gt;
+            [ngClass]&#x3D;&quot;{&#x27;btn-primary&#x27;: mode&#x3D;&#x3D;&#x3D;advancedMode, &#x27;btn-secondary&#x27;: mode!&#x3D;&#x3D;advancedMode}&quot;&gt;
+            &lt;i class&#x3D;&quot;fa fa-fire&quot;&gt;&lt;/i&gt; {{config.labels.buttons.advanced}}&lt;/button&gt;
         &lt;/div&gt;
 
-        &lt;div class&#x3D;&quot;btn-group btn-group-xs&quot;&gt;
-          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot; (click)&#x3D;&quot;resetQueryTemplate()&quot;&gt;
-            &lt;i class&#x3D;&quot;glyphicon glyphicon-repeat&quot;&gt;&lt;/i&gt; {{config.labels.buttons.reset}}&lt;/button&gt;
+        &lt;div class&#x3D;&quot;btn-group btn-group-sm ml-1&quot;&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;resetQueryTemplate()&quot;&gt;
+            &lt;i class&#x3D;&quot;fa fa-repeat&quot;&gt;&lt;/i&gt; {{config.labels.buttons.reset}}&lt;/button&gt;
           &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;executeQuery()&quot;&gt;
-            &lt;i class&#x3D;&quot;glyphicon glyphicon-search&quot;&gt;&lt;/i&gt; {{config.labels.buttons.search}}&lt;/button&gt;
+            &lt;i class&#x3D;&quot;fa fa-search&quot;&gt;&lt;/i&gt; {{config.labels.buttons.search}}&lt;/button&gt;
         &lt;/div&gt;
 
         &lt;ng-container *ngIf&#x3D;&quot;toolbarTemplate&quot; [ngTemplateOutlet]&#x3D;&quot;toolbarTemplate&quot;
@@ -878,11 +937,11 @@ import { QueryConfigurationService } from &#x27;./services/configuration.service
       &lt;/div&gt;
       &lt;div class&#x3D;&quot;clearfix&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;panel-body&quot;&gt;
-      &lt;ngx-query-plain [class.hide]&#x3D;&quot;mode!&#x3D;&#x27;plain&#x27;&quot; #planQuery
+    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+      &lt;ngx-query-plain [hidden]&#x3D;&quot;mode!&#x3D;&#x3D;plainMode&quot; #planQuery
         [queryTemplate]&#x3D;&quot;currentQueryTemplate.template&quot;&gt;
       &lt;/ngx-query-plain&gt;
-      &lt;ngx-query-advanced [class.hide]&#x3D;&quot;mode!&#x3D;&#x27;advanced&#x27;&quot; #advancedQuery
+      &lt;ngx-query-advanced [hidden]&#x3D;&quot;mode!&#x3D;&#x3D;advancedMode&quot; #advancedQuery
         [queryTemplate]&#x3D;&quot;currentQueryTemplate.template&quot; [fields]&#x3D;&quot;tempFields&quot;&gt;
       &lt;/ngx-query-advanced&gt;
     &lt;/div&gt;
@@ -890,26 +949,25 @@ import { QueryConfigurationService } from &#x27;./services/configuration.service
 
   &lt;!-- Value Input Templates --&gt;
   &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;any&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
   &lt;/ng-template&gt;
   &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;string&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
   &lt;/ng-template&gt;
   &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;boolean&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-    &lt;div class&#x3D;&quot;checkbox&quot;&gt;
-      &lt;label&gt;
-        &lt;input type&#x3D;&quot;checkbox&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
-      &lt;/label&gt;
-    &lt;/div&gt;
+    &lt;label class&#x3D;&quot;custom-control custom-checkbox&quot;&gt;
+      &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+      &lt;span class&#x3D;&quot;custom-control-indicator&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
   &lt;/ng-template&gt;
   &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;number&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-    &lt;input type&#x3D;&quot;number&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+    &lt;input type&#x3D;&quot;number&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
   &lt;/ng-template&gt;
   &lt;ng-template ngx-query-value-input-template  dataType&#x3D;&quot;date&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-    &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+    &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
   &lt;/ng-template&gt;
   &lt;ng-template ngx-query-value-input-template dataType&#x3D;&quot;datetime&quot; let-rule&#x3D;&quot;rule&quot; let-dataIndex&#x3D;&quot;dataIndex&quot;&gt;
-    &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
+    &lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;form-control form-control-sm&quot; [placeholder]&#x3D;&quot;rule.field.label&quot; [(ngModel)]&#x3D;&quot;rule.datas[dataIndex]&quot; /&gt;
   &lt;/ng-template&gt;
   &lt;!-- Value Input Templates --&gt;
   &#x60;,
@@ -921,6 +979,7 @@ import { QueryConfigurationService } from &#x27;./services/configuration.service
 export class QueryComponent {
 
   @Output() query: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  @Output() reset: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
   @Input() title: string;
   @Input() mode: QueryMode &#x3D; QueryMode.plain;
@@ -963,7 +1022,9 @@ export class QueryComponent {
       this.translateQueryGroup(queryTemplate.template, this.tempFields);
     });
 
-    this.queryTemplateChanged(this._queryTemplates[0]);
+    if (this.tempFields &amp;&amp; this.tempFields.length &gt; 0) {
+      this.queryTemplateChanged(this._queryTemplates[0]);
+    }
   }
   get queryTemplates(): Array&lt;{ name: string, template: QueryGroup }&gt; {
     return this._queryTemplates;
@@ -974,6 +1035,8 @@ export class QueryComponent {
 
   tempFields: Array&lt;Field&gt;;
   currentQueryTemplate: { name: string, template: QueryGroup };
+  readonly plainMode: QueryMode &#x3D; QueryMode.plain;
+  readonly advancedMode: QueryMode &#x3D; QueryMode.advanced;
 
   private _fieldTemplates: QueryList&lt;FieldDirective&gt;;
   private _valueInputTemplates: Array&lt;ValueInputTemplateDirective&gt;;
@@ -1016,6 +1079,13 @@ export class QueryComponent {
   }
 
   resetQueryTemplate(): void {
+
+    const args: any &#x3D; {
+      queryTemplate: this.currentQueryTemplate
+    };
+
+    this.reset.emit(args);
+
     if (this.mode &#x3D;&#x3D;&#x3D; QueryMode.plain) {
       this._plainQuery.reset();
     }
@@ -1069,7 +1139,7 @@ export class QueryComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="panel panel-default">  <div class="panel-heading">    <div class="pull-left">      <h3 class="panel-title">{{title}}</h3>    </div>    <div class="btn-toolbar pull-right">      <div class="btn-group btn-group-xs" *ngIf="queryTemplates.length>1">        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          <i class="glyphicon glyphicon-retweet"></i> {{currentQueryTemplate.name}}          <span class="caret"></span>        </button>        <ul class="dropdown-menu">          <li *ngFor="let item of queryTemplates"><a href="javascript:" (click)="queryTemplateChanged(item)">{{item.name}}</a></li>        </ul>      </div>      <div class="btn-group  btn-group-xs" *ngIf="showModeButtons">        <button type="button" class="btn" (click)="showPlainPanel()"          [ngClass]="{\'btn-primary\': mode==\'plain\', \'btn-default\': mode!=\'plain\'}">          <i class="glyphicon glyphicon-filter"></i> {{config.labels.buttons.quick}}</button>        <button type="button" class="btn" (click)="showAdvancedPanel()"          [ngClass]="{\'btn-primary\': mode==\'advanced\', \'btn-default\': mode!=\'advanced\'}">          <i class="glyphicon glyphicon-fire"></i> {{config.labels.buttons.advanced}}</button>      </div>      <div class="btn-group btn-group-xs">        <button type="button" class="btn btn-default" (click)="resetQueryTemplate()">          <i class="glyphicon glyphicon-repeat"></i> {{config.labels.buttons.reset}}</button>        <button type="button" class="btn btn-primary" (click)="executeQuery()">          <i class="glyphicon glyphicon-search"></i> {{config.labels.buttons.search}}</button>      </div>      <ng-container *ngIf="toolbarTemplate" [ngTemplateOutlet]="toolbarTemplate"                  [ngOutletContext]="{toolbar: toolbar}"></ng-container>    </div>    <div class="clearfix"></div>  </div>  <div class="panel-body">    <ngx-query-plain [class.hide]="mode!=\'plain\'" #planQuery      [queryTemplate]="currentQueryTemplate.template">    </ngx-query-plain>    <ngx-query-advanced [class.hide]="mode!=\'advanced\'" #advancedQuery      [queryTemplate]="currentQueryTemplate.template" [fields]="tempFields">    </ngx-query-advanced>  </div></div><!-- Value Input Templates --><ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex">  <div class="checkbox">    <label>      <input type="checkbox" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />    </label>  </div></ng-template><ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">  <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><!-- Value Input Templates --></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="card">  <div class="card-header">    <div class="float-left">      <h5>{{title}}</h5>    </div>    <div class="btn-toolbar float-right">      <div class="btn-group btn-group-sm ml-1" *ngIf="queryTemplates.length>1">        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          <i class="fa fa-retweet"></i> {{currentQueryTemplate.name}}          <span class="caret"></span>        </button>        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">          <a *ngFor="let item of queryTemplates" href="javascript:"            class="dropdown-item" (click)="queryTemplateChanged(item)">{{item.name}}</a>        </div>      </div>      <div class="btn-group btn-group-sm ml-1" *ngIf="showModeButtons">        <button type="button" class="btn" (click)="showPlainPanel()"          [ngClass]="{\'btn-primary\': mode===plainMode, \'btn-secondary\': mode!==plainMode}">          <i class="fa fa-filter"></i> {{config.labels.buttons.quick}}</button>        <button type="button" class="btn" (click)="showAdvancedPanel()"          [ngClass]="{\'btn-primary\': mode===advancedMode, \'btn-secondary\': mode!==advancedMode}">          <i class="fa fa-fire"></i> {{config.labels.buttons.advanced}}</button>      </div>      <div class="btn-group btn-group-sm ml-1">        <button type="button" class="btn btn-secondary" (click)="resetQueryTemplate()">          <i class="fa fa-repeat"></i> {{config.labels.buttons.reset}}</button>        <button type="button" class="btn btn-primary" (click)="executeQuery()">          <i class="fa fa-search"></i> {{config.labels.buttons.search}}</button>      </div>      <ng-container *ngIf="toolbarTemplate" [ngTemplateOutlet]="toolbarTemplate"                  [ngOutletContext]="{toolbar: toolbar}"></ng-container>    </div>    <div class="clearfix"></div>  </div>  <div class="card-body">    <ngx-query-plain [hidden]="mode!==plainMode" #planQuery      [queryTemplate]="currentQueryTemplate.template">    </ngx-query-plain>    <ngx-query-advanced [hidden]="mode!==advancedMode" #advancedQuery      [queryTemplate]="currentQueryTemplate.template" [fields]="tempFields">    </ngx-query-advanced>  </div></div><!-- Value Input Templates --><ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex">  <input type="text" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex">  <label class="custom-control custom-checkbox">    <input type="checkbox" class="custom-control-input" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />    <span class="custom-control-indicator"></span>  </label></ng-template><ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">  <input type="number" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">  <input type="date" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" /></ng-template><!-- Value Input Templates --></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
     var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'QueryComponent'};

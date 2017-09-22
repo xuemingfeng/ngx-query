@@ -427,22 +427,20 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;col-md-12 mb-2&quot;&gt;
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
-        &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
-            &lt;div class&#x3D;&quot;input-group&quot;&gt;
-                &lt;div class&#x3D;&quot;input-group-btn&quot;&gt;
-                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot;
-                        (click)&#x3D;&quot;addGroup()&quot;&gt;&lt;i class&#x3D;&quot;glyphicon glyphicon-plus&quot;&gt;&lt;/i&gt; {{&#x27;{}&#x27;}}&lt;/button&gt;
-                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot;
-                        (click)&#x3D;&quot;addRule()&quot;&gt;&lt;i class&#x3D;&quot;glyphicon glyphicon-plus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot; *ngIf&#x3D;&quot;canRemove&quot;
-                        (click)&#x3D;&quot;removeGroup()&quot;&gt;&lt;i class&#x3D;&quot;glyphicon glyphicon-minus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-                &lt;/div&gt;
-                &lt;select class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;group.op&quot;&gt;
-                    &lt;option *ngFor&#x3D;&quot;let item of groupOps&quot; [ngValue]&#x3D;&quot;item.key&quot;&gt;{{item.label}}&lt;/option&gt;
-                &lt;/select&gt;
+        &lt;div class&#x3D;&quot;input-group&quot;&gt;
+            &lt;div class&#x3D;&quot;input-group-btn&quot;&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary btn-sm&quot;
+                    (click)&#x3D;&quot;addGroup()&quot;&gt;&lt;i class&#x3D;&quot;fa fa-plus&quot;&gt;&lt;/i&gt; {{&#x27;{}&#x27;}}&lt;/button&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary btn-sm&quot;
+                    (click)&#x3D;&quot;addRule()&quot;&gt;&lt;i class&#x3D;&quot;fa fa-plus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary btn-sm&quot; *ngIf&#x3D;&quot;canRemove&quot;
+                    (click)&#x3D;&quot;removeGroup()&quot;&gt;&lt;i class&#x3D;&quot;fa fa-minus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
             &lt;/div&gt;
+            &lt;select class&#x3D;&quot;form-control form-control-sm border border-secondary&quot; [(ngModel)]&#x3D;&quot;group.op&quot;&gt;
+                &lt;option *ngFor&#x3D;&quot;let item of groupOps&quot; [ngValue]&#x3D;&quot;item.key&quot;&gt;{{item.label}}&lt;/option&gt;
+            &lt;/select&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -484,7 +482,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/advanced/group.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/advanced/group.component.ts:46</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -504,7 +502,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/advanced/group.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/advanced/group.component.ts:45</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -524,7 +522,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/advanced/group.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/advanced/group.component.ts:44</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -546,7 +544,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/advanced/group.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/advanced/group.component.ts:47</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -564,7 +562,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/advanced/group.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/advanced/group.component.ts:49</a></div>
                                 </td>
                             </tr>
     
@@ -593,7 +591,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/advanced/group.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/advanced/group.component.ts:49</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -612,22 +610,20 @@ import { QueryConfigurationService } from &#x27;../services/configuration.servic
     selector: &#x27;ngx-query-group&#x27;,
     template:
     &#x60;
-    &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+    &lt;div class&#x3D;&quot;col-md-12 mb-2&quot;&gt;
         &lt;div class&#x3D;&quot;form-group&quot;&gt;
-            &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
-                &lt;div class&#x3D;&quot;input-group&quot;&gt;
-                    &lt;div class&#x3D;&quot;input-group-btn&quot;&gt;
-                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot;
-                            (click)&#x3D;&quot;addGroup()&quot;&gt;&lt;i class&#x3D;&quot;glyphicon glyphicon-plus&quot;&gt;&lt;/i&gt; {{&#x27;{}&#x27;}}&lt;/button&gt;
-                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot;
-                            (click)&#x3D;&quot;addRule()&quot;&gt;&lt;i class&#x3D;&quot;glyphicon glyphicon-plus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot; *ngIf&#x3D;&quot;canRemove&quot;
-                            (click)&#x3D;&quot;removeGroup()&quot;&gt;&lt;i class&#x3D;&quot;glyphicon glyphicon-minus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-                    &lt;/div&gt;
-                    &lt;select class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;group.op&quot;&gt;
-                        &lt;option *ngFor&#x3D;&quot;let item of groupOps&quot; [ngValue]&#x3D;&quot;item.key&quot;&gt;{{item.label}}&lt;/option&gt;
-                    &lt;/select&gt;
+            &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                &lt;div class&#x3D;&quot;input-group-btn&quot;&gt;
+                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary btn-sm&quot;
+                        (click)&#x3D;&quot;addGroup()&quot;&gt;&lt;i class&#x3D;&quot;fa fa-plus&quot;&gt;&lt;/i&gt; {{&#x27;{}&#x27;}}&lt;/button&gt;
+                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary btn-sm&quot;
+                        (click)&#x3D;&quot;addRule()&quot;&gt;&lt;i class&#x3D;&quot;fa fa-plus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary btn-sm&quot; *ngIf&#x3D;&quot;canRemove&quot;
+                        (click)&#x3D;&quot;removeGroup()&quot;&gt;&lt;i class&#x3D;&quot;fa fa-minus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
                 &lt;/div&gt;
+                &lt;select class&#x3D;&quot;form-control form-control-sm border border-secondary&quot; [(ngModel)]&#x3D;&quot;group.op&quot;&gt;
+                    &lt;option *ngFor&#x3D;&quot;let item of groupOps&quot; [ngValue]&#x3D;&quot;item.key&quot;&gt;{{item.label}}&lt;/option&gt;
+                &lt;/select&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -715,7 +711,7 @@ export class GroupComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="col-md-12">    <div class="form-group">        <div class="col-md-3">            <div class="input-group">                <div class="input-group-btn">                    <button type="button" class="btn btn-default"                        (click)="addGroup()"><i class="glyphicon glyphicon-plus"></i> {{\'{}\'}}</button>                    <button type="button" class="btn btn-default"                        (click)="addRule()"><i class="glyphicon glyphicon-plus"></i></button>                    <button type="button" class="btn btn-default" *ngIf="canRemove"                        (click)="removeGroup()"><i class="glyphicon glyphicon-minus"></i></button>                </div>                <select class="form-control" [(ngModel)]="group.op">                    <option *ngFor="let item of groupOps" [ngValue]="item.key">{{item.label}}</option>                </select>            </div>        </div>    </div></div><div *ngIf="group.groups.length>0" class="col-md-12 ngx-query-group-children">    <ngx-query-group *ngFor="let group of group.groups" [group]="group"        [fields]="fields" [canRemove]="true" (remove)="removeGroupItem($event)">    </ngx-query-group></div><div *ngIf="group.rules.length>0" class="col-md-12 ngx-query-group-children">    <ngx-query-rule *ngFor="let rule of group.rules" [group]="group" [rule]="rule" [fields]="fields">    </ngx-query-rule></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="col-md-12 mb-2">    <div class="form-group">        <div class="input-group">            <div class="input-group-btn">                <button type="button" class="btn btn-outline-secondary btn-sm"                    (click)="addGroup()"><i class="fa fa-plus"></i> {{\'{}\'}}</button>                <button type="button" class="btn btn-outline-secondary btn-sm"                    (click)="addRule()"><i class="fa fa-plus"></i></button>                <button type="button" class="btn btn-outline-secondary btn-sm" *ngIf="canRemove"                    (click)="removeGroup()"><i class="fa fa-minus"></i></button>            </div>            <select class="form-control form-control-sm border border-secondary" [(ngModel)]="group.op">                <option *ngFor="let item of groupOps" [ngValue]="item.key">{{item.label}}</option>            </select>        </div>    </div></div><div *ngIf="group.groups.length>0" class="col-md-12 ngx-query-group-children">    <ngx-query-group *ngFor="let group of group.groups" [group]="group"        [fields]="fields" [canRemove]="true" (remove)="removeGroupItem($event)">    </ngx-query-group></div><div *ngIf="group.rules.length>0" class="col-md-12 ngx-query-group-children">    <ngx-query-rule *ngFor="let rule of group.rules" [group]="group" [rule]="rule" [fields]="fields">    </ngx-query-rule></div></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
     var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'GroupComponent'};

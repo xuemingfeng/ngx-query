@@ -421,7 +421,7 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot;&gt;
-  &lt;div class&#x3D;&quot;form-horizontal&quot;&gt;
+  &lt;div class&#x3D;&quot;form-inline&quot;&gt;
     &lt;ngx-query-group [group]&#x3D;&quot;tempQueryTemplate&quot; [fields]&#x3D;&quot;fields&quot;&gt;&lt;/ngx-query-group&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -536,7 +536,7 @@ import { cloneQueryGroup, generateQuery } from &#x27;../utils/query-helper&#x27;
   selector: &#x27;ngx-query-advanced&#x27;,
   template: &#x60;
   &lt;div class&#x3D;&quot;row&quot;&gt;
-    &lt;div class&#x3D;&quot;form-horizontal&quot;&gt;
+    &lt;div class&#x3D;&quot;form-inline&quot;&gt;
       &lt;ngx-query-group [group]&#x3D;&quot;tempQueryTemplate&quot; [fields]&#x3D;&quot;fields&quot;&gt;&lt;/ngx-query-group&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -610,7 +610,7 @@ export class AdvancedComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="row">  <div class="form-horizontal">    <ngx-query-group [group]="tempQueryTemplate" [fields]="fields"></ngx-query-group>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="row">  <div class="form-inline">    <ngx-query-group [group]="tempQueryTemplate" [fields]="fields"></ngx-query-group>  </div></div></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
     var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'AdvancedComponent'};

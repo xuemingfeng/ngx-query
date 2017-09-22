@@ -420,26 +420,24 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot;&gt;
-  &lt;div class&#x3D;&quot;form-horizontal&quot;&gt;
-    &lt;div class&#x3D;&quot;col-md-6&quot; *ngFor&#x3D;&quot;let rule of rules&quot;&gt;
-      &lt;div class&#x3D;&quot;form-group&quot;&gt;
-        &lt;label class&#x3D;&quot;col-lg-3 control-label&quot;&gt;{{rule.field.label}}&lt;/label&gt;
-        &lt;div class&#x3D;&quot;col-lg-9&quot;&gt;
-          &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-            [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
-          &lt;ul class&#x3D;&quot;list-inline ngx-query-list-inline&quot; *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
-              &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                    [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;
-                  &lt;/ng-container&gt;
-              &lt;/li&gt;
-              &lt;li&gt;&lt;span&gt;-&lt;/span&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                    [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom}&quot;&gt;
-                  &lt;/ng-container&gt;
-              &lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/div&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;form-row&quot;&gt;
+  &lt;div class&#x3D;&quot;form-group col-md-6&quot; *ngFor&#x3D;&quot;let rule of rules&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;label class&#x3D;&quot;col-md-3 col-form-label text-right&quot;&gt;{{rule.field.label}}&lt;/label&gt;
+      &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+          [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
+        &lt;ul class&#x3D;&quot;list-inline ngx-query-list-inline&quot; *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
+            &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+                  [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;
+                &lt;/ng-container&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;span&gt;-&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+                  [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom}&quot;&gt;
+                &lt;/ng-container&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -466,7 +464,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/plain/plain.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/plain/plain.component.ts:36</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -496,7 +494,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/plain/plain.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/plain/plain.component.ts:41</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -516,7 +514,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/plain/plain.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/plain/plain.component.ts:45</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -534,12 +532,11 @@ import { cloneQueryGroup, generateQuery } from &#x27;../utils/query-helper&#x27;
 @Component({
   selector: &#x27;ngx-query-plain&#x27;,
   template: &#x60;
-  &lt;div class&#x3D;&quot;row&quot;&gt;
-    &lt;div class&#x3D;&quot;form-horizontal&quot;&gt;
-      &lt;div class&#x3D;&quot;col-md-6&quot; *ngFor&#x3D;&quot;let rule of rules&quot;&gt;
-        &lt;div class&#x3D;&quot;form-group&quot;&gt;
-          &lt;label class&#x3D;&quot;col-lg-3 control-label&quot;&gt;{{rule.field.label}}&lt;/label&gt;
-          &lt;div class&#x3D;&quot;col-lg-9&quot;&gt;
+    &lt;div class&#x3D;&quot;form-row&quot;&gt;
+      &lt;div class&#x3D;&quot;form-group col-md-6&quot; *ngFor&#x3D;&quot;let rule of rules&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;label class&#x3D;&quot;col-md-3 col-form-label text-right&quot;&gt;{{rule.field.label}}&lt;/label&gt;
+          &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
             &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
               [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
             &lt;ul class&#x3D;&quot;list-inline ngx-query-list-inline&quot; *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
@@ -557,7 +554,6 @@ import { cloneQueryGroup, generateQuery } from &#x27;../utils/query-helper&#x27;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
   &#x60;
 })
 export class PlainComponent {
@@ -627,7 +623,7 @@ export class PlainComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="row">  <div class="form-horizontal">    <div class="col-md-6" *ngFor="let rule of rules">      <div class="form-group">        <label class="col-lg-3 control-label">{{rule.field.label}}</label>        <div class="col-lg-9">          <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"            [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>          <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op==\'bt\'">              <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">                  </ng-container>              </li>              <li><span>-</span></li>              <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                    [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">                  </ng-container>              </li>          </ul>        </div>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="form-row">  <div class="form-group col-md-6" *ngFor="let rule of rules">    <div class="row">      <label class="col-md-3 col-form-label text-right">{{rule.field.label}}</label>      <div class="col-md-9">        <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"          [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>        <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op==\'bt\'">            <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                  [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">                </ng-container>            </li>            <li><span>-</span></li>            <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                  [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">                </ng-container>            </li>        </ul>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
     var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'PlainComponent'};
