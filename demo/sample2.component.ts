@@ -5,14 +5,14 @@ import { QueryConfigurationService } from '../src/services/configuration.service
 @Component({
   selector: 'ngx-query-demo-app-sample2',
   template: `
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-12">
-      <h2>Sample 2 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample2.component.ts" class="btn btn-xs btn-primary" target="_blank">Source</a></h2>
+      <h2>Sample 2 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample2.component.ts" class="btn btn-sm btn-primary" target="_blank">Source</a></h2>
       <p>Set up <code>ngx-query</code> with <code>ngx-query-value-input-template</code>.</p>
       <ngx-query #ngxQuery [title]="queryTitle" (query)="search($event)" [queryTemplates]="queryTemplates">
         <ngx-query-field [name]="'field1'" [label]="'Full Name'" [type]="'string'" [custom]="dropdownItems">
           <ng-template ngx-query-value-input-template let-rule="rule" let-dataIndex="dataIndex" let-options="custom">
-            <select class="form-control" [(ngModel)]="rule.datas[dataIndex]">
+            <select class="form-control form-control-sm" [(ngModel)]="rule.datas[dataIndex]">
               <option *ngFor="let item of options" [ngValue]="item.key">{{item.name}}</option>              
             </select>
           </ng-template>

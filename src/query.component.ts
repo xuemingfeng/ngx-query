@@ -16,37 +16,38 @@ import { QueryConfigurationService } from './services/configuration.service';
 @Component({
   selector: 'ngx-query',
   template: `
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="pull-left">
-        <h3 class="panel-title">{{title}}</h3>
+  <div class="card">
+    <div class="card-header">
+      <div class="float-left">
+        <h5>{{title}}</h5>
       </div>
-      <div class="btn-toolbar pull-right">
+      <div class="btn-toolbar float-right">
 
-        <div class="btn-group btn-group-xs" *ngIf="queryTemplates.length>1">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="glyphicon glyphicon-retweet"></i> {{currentQueryTemplate.name}}
+        <div class="btn-group btn-group-sm ml-1" *ngIf="queryTemplates.length>1">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-retweet"></i> {{currentQueryTemplate.name}}
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
-            <li *ngFor="let item of queryTemplates"><a href="javascript:" (click)="queryTemplateChanged(item)">{{item.name}}</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a *ngFor="let item of queryTemplates" href="javascript:"
+              class="dropdown-item" (click)="queryTemplateChanged(item)">{{item.name}}</a>
+          </div>
         </div>
 
-        <div class="btn-group  btn-group-xs" *ngIf="showModeButtons">
+        <div class="btn-group btn-group-sm ml-1" *ngIf="showModeButtons">
           <button type="button" class="btn" (click)="showPlainPanel()"
-            [ngClass]="{'btn-primary': mode===plainMode, 'btn-default': mode!==plainMode}">
-            <i class="glyphicon glyphicon-filter"></i> {{config.labels.buttons.quick}}</button>
+            [ngClass]="{'btn-primary': mode===plainMode, 'btn-secondary': mode!==plainMode}">
+            <i class="fa fa-filter"></i> {{config.labels.buttons.quick}}</button>
           <button type="button" class="btn" (click)="showAdvancedPanel()"
-            [ngClass]="{'btn-primary': mode===advancedMode, 'btn-default': mode!==advancedMode}">
-            <i class="glyphicon glyphicon-fire"></i> {{config.labels.buttons.advanced}}</button>
+            [ngClass]="{'btn-primary': mode===advancedMode, 'btn-secondary': mode!==advancedMode}">
+            <i class="fa fa-fire"></i> {{config.labels.buttons.advanced}}</button>
         </div>
 
-        <div class="btn-group btn-group-xs">
-          <button type="button" class="btn btn-default" (click)="resetQueryTemplate()">
-            <i class="glyphicon glyphicon-repeat"></i> {{config.labels.buttons.reset}}</button>
+        <div class="btn-group btn-group-sm ml-1">
+          <button type="button" class="btn btn-secondary" (click)="resetQueryTemplate()">
+            <i class="fa fa-repeat"></i> {{config.labels.buttons.reset}}</button>
           <button type="button" class="btn btn-primary" (click)="executeQuery()">
-            <i class="glyphicon glyphicon-search"></i> {{config.labels.buttons.search}}</button>
+            <i class="fa fa-search"></i> {{config.labels.buttons.search}}</button>
         </div>
 
         <ng-container *ngIf="toolbarTemplate" [ngTemplateOutlet]="toolbarTemplate"
@@ -55,11 +56,11 @@ import { QueryConfigurationService } from './services/configuration.service';
       </div>
       <div class="clearfix"></div>
     </div>
-    <div class="panel-body">
-      <ngx-query-plain [class.hide]="mode!==plainMode" #planQuery
+    <div class="card-body">
+      <ngx-query-plain [hidden]="mode!==plainMode" #planQuery
         [queryTemplate]="currentQueryTemplate.template">
       </ngx-query-plain>
-      <ngx-query-advanced [class.hide]="mode!==advancedMode" #advancedQuery
+      <ngx-query-advanced [hidden]="mode!==advancedMode" #advancedQuery
         [queryTemplate]="currentQueryTemplate.template" [fields]="tempFields">
       </ngx-query-advanced>
     </div>
@@ -67,26 +68,25 @@ import { QueryConfigurationService } from './services/configuration.service';
 
   <!-- Value Input Templates -->
   <ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex">
-    <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+    <input type="text" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex">
-    <input type="text" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+    <input type="text" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
-      </label>
-    </div>
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+      <span class="custom-control-indicator"></span>
+    </label>
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex">
-    <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+    <input type="number" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">
-    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+    <input type="date" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">
-    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+    <input type="date" class="form-control form-control-sm" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <!-- Value Input Templates -->
   `,

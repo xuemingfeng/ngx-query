@@ -5,9 +5,9 @@ import { QueryConfigurationService } from '../src/services/configuration.service
 @Component({
   selector: 'ngx-query-demo-app-sample1',
   template: `
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-12">
-      <h2>Sample 1 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample1.component.ts" class="btn btn-xs btn-primary" target="_blank">Source</a></h2> 
+      <h2>Sample 1 <a href="//github.com/xuemingfeng/ngx-query/blob/master/demo/sample1.component.ts" class="btn btn-sm btn-primary" target="_blank">Source</a></h2> 
       <p>Set up <code>ngx-query</code>.</p>
       <ngx-query #ngxQuery [title]="queryTitle" (query)="search($event)" [fields]="fields" [queryTemplates]="queryTemplates">        
       </ngx-query>
