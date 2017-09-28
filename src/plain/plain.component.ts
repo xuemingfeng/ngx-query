@@ -14,17 +14,15 @@ import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
           <div class="col-lg-9">
             <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
               [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
-            <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op=='bt'">
-                <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                      [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">
-                    </ng-container>
-                </li>
-                <li><span>-</span></li>
-                <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                      [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">
-                    </ng-container>
-                </li>
-            </ul>
+            <div class="input-group" *ngIf="rule.op=='bt'">
+              <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">
+              </ng-container>
+              <span class="input-group-addon">-</span>
+              <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
+                [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">
+              </ng-container>
+            </div>
           </div>
         </div>
       </div>
