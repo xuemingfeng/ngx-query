@@ -91,6 +91,9 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
       if (rule.datas)
         if (rule2.op === 'bt') {
           rule2.datas = rule.datas;
+          while (rule2.datas.length < 2) {
+            rule2.datas.push(null);
+          }
         } else {
           rule2.data = rule.datas[0];
         }
