@@ -83,7 +83,13 @@ import { QueryConfigurationService } from './services/configuration.service';
     <input type="number" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
   <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">
-    <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
+    <div class="input-group">
+      <input type="text" class="form-control" [placeholder]="rule.field.label" bsDatepicker
+        #dp="bsDatepicker" [(bsValue)]="rule.datas[dataIndex]" />
+      <div class="input-group-btn">
+        <button class="btn btn-default" (click)="dp.show()"><i class="glyphicon glyphicon-calendar"></i></button>
+      </div>
+    </div>
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">
     <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
