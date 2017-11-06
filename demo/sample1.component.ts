@@ -34,7 +34,7 @@ export class Sample1Component {
         {
           op: 'or',
           rules: [
-            { field: 'field2', op: 'bt' }
+            { field: 'field2', op: 'bt', datas: ['2017-10-21', new Date()] }
           ]
         }
       ]

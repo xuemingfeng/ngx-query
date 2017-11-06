@@ -1,4 +1,4 @@
-import { Field, QueryGroup, Rule } from '../query.types';
+import { Field, QueryGroup, Rule, DataType } from '../query.types';
 
 export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>): void {
 
@@ -30,6 +30,15 @@ export function translateQueryGroup(queryGroup: QueryGroup, fields: Array<Field>
         }
 
         rule.field = field;
+      }
+
+      if ((<Field>rule.field).type === DataType.date) {
+        for (var i: number = 0; i <= rule.datas.length; i++) {
+          const d: any = rule.datas[i];
+          if (typeof d === 'string' && d && d !== null && d !== '') {
+            rule.datas[i] = new Date(d);
+          }
+        }
       }
     }
   }
