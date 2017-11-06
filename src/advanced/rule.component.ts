@@ -17,7 +17,7 @@ import { QueryConfigurationService } from '../services/configuration.service';
                         <button type="button" class="btn btn-default"
                             (click)="removeRule()"><i class="glyphicon glyphicon-minus"></i></button>
                     </div>
-                    <select class="form-control" [(ngModel)]="rule.field" (change)="fieldChanged()">
+                    <select class="form-control" [(ngModel)]="rule.field" (change)="fieldChanged(true)">
                         <option *ngFor="let field of fields" [ngValue]="field" [innerHtml]="field.label"></option>
                     </select>
                 </div>
@@ -56,7 +56,7 @@ export class RuleComponent {
     @Input()
     set rule(val: Rule) {
         this._rule = val;
-        this.fieldChanged();
+        this.fieldChanged(false);
     }
     get rule(): Rule {
         return this._rule;
@@ -86,7 +86,7 @@ export class RuleComponent {
         this.group.rules = this.group.rules.filter(x => x !== this.rule);
     }
 
-    fieldChanged(): void {
+    fieldChanged(fromControl: boolean): void {
 
         if (this._rule.datas === undefined) {
             this._rule.datas = [undefined, undefined];
@@ -101,6 +101,11 @@ export class RuleComponent {
             }
         } else {
             this.fieldOps = [];
+        }
+
+        if (fromControl) {
+            this._rule.data = null;
+            this._rule.datas = [];
         }
     }
 }
