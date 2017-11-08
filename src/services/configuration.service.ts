@@ -98,6 +98,8 @@ export class QueryConfigurationService {
         ]
     }];
 
+    datepicker: any;
+
     constructor( @Inject(QUERY_DEFAULTS) private defaultOptions: any) {
         this.update(defaultOptions);
     }
@@ -114,5 +116,7 @@ export class QueryConfigurationService {
                 op.label = this.labels.fieldOp[op.key];
             }
         }
+
+        this.datepicker = Object.assign({}, options.datepicker);
     }
 }

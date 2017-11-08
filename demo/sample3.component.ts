@@ -2,6 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { QueryComponent } from '../src/query.component';
 import { QueryConfigurationService } from '../src/services/configuration.service';
 
+import { defineLocale } from 'ngx-bootstrap/bs-moment';
+import { zhCn } from 'ngx-bootstrap/locale';
+
+defineLocale('zh-CN', zhCn);
+
 @Component({
   selector: 'ngx-query-demo-app-sample3',
   template: `
@@ -124,6 +129,10 @@ export class Sample3Component {
     this.fields[3].label = '订单完成';
 
     var options: any = {
+      datepicker: {
+        locale: 'zh-CN',
+        containerClass: 'theme-blue'
+      },
       labels: {
         buttons: {
           'quick': '快速',

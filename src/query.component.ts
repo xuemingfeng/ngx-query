@@ -3,6 +3,8 @@ import {
   ViewChild, ViewChildren, TemplateRef, EventEmitter, ViewEncapsulation
 } from '@angular/core';
 
+import { BsDatepickerConfig } from "ngx-bootstrap";
+
 import { Field, FieldOpItem, GroupOpItem, GroupOpType, QueryGroup, QueryMode } from './query.types';
 import { ValueInputTemplateDirective } from './directives/value-input-template.directive';
 import { FieldDirective } from './directives/field.directive';
@@ -84,7 +86,7 @@ import { QueryConfigurationService } from './services/configuration.service';
   </ng-template>
   <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex">
     <input type="text" class="form-control" [placeholder]="rule.field.label" bsDatepicker
-      #dp="bsDatepicker" [(bsValue)]="rule.datas[dataIndex]" />
+      #dp="bsDatepicker" [(bsValue)]="rule.datas[dataIndex]" [bsConfig]="config.datepicker"/>
   </ng-template>
   <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex">
     <input type="date" class="form-control" [placeholder]="rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
@@ -158,6 +160,8 @@ export class QueryComponent {
   readonly plainMode: QueryMode = QueryMode.plain;
   readonly advancedMode: QueryMode = QueryMode.advanced;
 
+  bsDatepickerConfig: Partial<BsDatepickerConfig>;
+
   private _fieldTemplates: QueryList<FieldDirective>;
   private _valueInputTemplates: Array<ValueInputTemplateDirective>;
 
@@ -172,7 +176,7 @@ export class QueryComponent {
     this.translateFields(this.tempFields, this._valueInputTemplates);
   }
 
-  constructor(public config: QueryConfigurationService) { }
+  constructor(public config: QueryConfigurationService) {}
 
   getQuery(): QueryGroup {
     var query: QueryGroup;
