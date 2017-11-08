@@ -3,7 +3,7 @@ import {
   ViewChild, ViewChildren, TemplateRef, EventEmitter, ViewEncapsulation
 } from '@angular/core';
 
-import { BsDatepickerConfig } from "ngx-bootstrap";
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 
 import { Field, FieldOpItem, GroupOpItem, GroupOpType, QueryGroup, QueryMode } from './query.types';
 import { ValueInputTemplateDirective } from './directives/value-input-template.directive';
