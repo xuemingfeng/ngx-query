@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 import { Field, QueryGroup, Rule, GroupOpItem } from '../query.types';
 import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
@@ -13,7 +13,7 @@ import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
   </div>
   `
 })
-export class AdvancedComponent {
+export class AdvancedComponent implements AfterViewInit {
 
   @Input() fields: Array<Field> = [];
   @Input()
@@ -30,6 +30,12 @@ export class AdvancedComponent {
 
   private _rules: Rule[];
   private _queryTemplate: QueryGroup;
+
+  constructor(private cdRef: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    this.cdRef.detectChanges();
+  }
 
   reset(): void {
     this.queryTemplate = this._queryTemplate;
