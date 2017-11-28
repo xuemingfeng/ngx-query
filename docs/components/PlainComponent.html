@@ -393,6 +393,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-interface.html" target="_blank" >AfterViewInit</a></code>
+    </p>
 
 
 <section>
@@ -427,17 +433,18 @@
       &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
         &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
           [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
-        &lt;ul class&#x3D;&quot;list-inline ngx-query-list-inline&quot; *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
-            &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                  [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;
-                &lt;/ng-container&gt;
-            &lt;/li&gt;
-            &lt;li&gt;&lt;span&gt;-&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                  [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom}&quot;&gt;
-                &lt;/ng-container&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
+        &lt;div *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot; class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+              [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}&quot;&gt;
+            &lt;/ng-container&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+              [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}&quot;&gt;
+            &lt;/ng-container&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -464,7 +471,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/plain/plain.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/plain/plain.component.ts:38</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -472,6 +479,24 @@
     </section>
 
 
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(config: any, cdRef: any)</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/plain/plain.component.ts:50</a></div>
+                                </td>
+                            </tr>
+    
+                </tbody>
+            </table>
+    </section>
 
 
     <section>
@@ -479,6 +504,21 @@
             <h3 id="inputs">
                 Properties
             </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> config</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>config:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -494,7 +534,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/plain/plain.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/plain/plain.component.ts:43</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -514,7 +554,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/plain/plain.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/plain/plain.component.ts:47</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -524,10 +564,11 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, Output, AfterViewInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 
 import { Field, QueryGroup, Rule } from &#x27;../query.types&#x27;;
 import { cloneQueryGroup, generateQuery } from &#x27;../utils/query-helper&#x27;;
+import { QueryConfigurationService } from &#x27;../services/configuration.service&#x27;;
 
 @Component({
   selector: &#x27;ngx-query-plain&#x27;,
@@ -539,24 +580,25 @@ import { cloneQueryGroup, generateQuery } from &#x27;../utils/query-helper&#x27;
           &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
             &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
               [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
-            &lt;ul class&#x3D;&quot;list-inline ngx-query-list-inline&quot; *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
-                &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                      [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;
-                    &lt;/ng-container&gt;
-                &lt;/li&gt;
-                &lt;li&gt;&lt;span&gt;-&lt;/span&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                      [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom}&quot;&gt;
-                    &lt;/ng-container&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
+            &lt;div *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot; class&#x3D;&quot;row&quot;&gt;
+              &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+                  [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}&quot;&gt;
+                &lt;/ng-container&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
+                  [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}&quot;&gt;
+                &lt;/ng-container&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &#x60;
 })
-export class PlainComponent {
+export class PlainComponent implements AfterViewInit {
 
   @Input()
   set queryTemplate(val: QueryGroup) {
@@ -572,6 +614,14 @@ export class PlainComponent {
 
   private _tempQueryTemplate: QueryGroup;
   private _queryTemplate: QueryGroup;
+
+  constructor(
+    public config: QueryConfigurationService,
+    private cdRef: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    this.cdRef.detectChanges();
+  }
 
   reset(): void {
     this.queryTemplate &#x3D; this._queryTemplate;
@@ -623,7 +673,7 @@ export class PlainComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="form-row">  <div class="form-group col-md-6" *ngFor="let rule of rules">    <div class="row">      <label class="col-md-3 col-form-label text-right">{{rule.field.label}}</label>      <div class="col-md-9">        <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"          [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>        <ul class="list-inline ngx-query-list-inline" *ngIf="rule.op==\'bt\'">            <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                  [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">                </ng-container>            </li>            <li><span>-</span></li>            <li><ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                  [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">                </ng-container>            </li>        </ul>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="form-row">  <div class="form-group col-md-6" *ngFor="let rule of rules">    <div class="row">      <label class="col-md-3 col-form-label text-right">{{rule.field.label}}</label>      <div class="col-md-9">        <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"          [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>        <div *ngIf="rule.op==\'bt\'" class="row">          <div class="col">            <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"              [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}">            </ng-container>          </div>          <div class="col">            <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"              [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}">            </ng-container>          </div>        </div>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
     var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'PlainComponent'};
