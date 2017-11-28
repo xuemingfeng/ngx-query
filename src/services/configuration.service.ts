@@ -7,6 +7,10 @@ import { QUERY_DEFAULTS } from '../providers/query-defaults.provider';
 export class QueryConfigurationService {
 
     labels: any = {
+        misc: {
+            'from': 'From',
+            'to': 'To'
+        },
         buttons: {
             'quick': 'Quick',
             'advanced': 'Advanced',

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 import { NgxQueryModule } from '../src';
 import { DemoComponent } from './demo.component';
 import { Sample1Component } from "./sample1.component";
@@ -20,6 +22,7 @@ import { Sample4Component } from "./sample4.component";
   imports: [
     BrowserModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
     NgxQueryModule.forRoot()
   ],
   bootstrap: [DemoComponent]

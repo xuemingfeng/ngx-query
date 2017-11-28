@@ -2,6 +2,8 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 import { QueryComponent } from './query.component';
 import { PlainComponent } from './plain/plain.component';
 import { AdvancedComponent } from './advanced/advanced.component';
@@ -29,7 +31,8 @@ import { QueryDefaultsProvider } from './providers/query-defaults.provider';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    BsDatepickerModule.forRoot()
   ],
   exports: [
     QueryComponent,

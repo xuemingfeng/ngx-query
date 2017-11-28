@@ -125,6 +125,10 @@ export class Sample3Component {
 
     var options: any = {
       labels: {
+        misc: {
+          'from': '从',
+          'to': '到'
+        },
         buttons: {
           'quick': '快速',
           'advanced': '高级',
