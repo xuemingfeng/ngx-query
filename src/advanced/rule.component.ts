@@ -6,7 +6,7 @@ import { QueryConfigurationService } from '../services/configuration.service';
 @Component({
     selector: 'ngx-query-rule',
     template:
-    `
+        `
     <div class="col-md-12 mb-2">
         <div class="form-group">
             <div class="input-group">
@@ -16,7 +16,7 @@ import { QueryConfigurationService } from '../services/configuration.service';
                     <button type="button" class="btn btn-outline-secondary btn-sm"
                         (click)="removeRule()"><i class="fa fa-minus"></i></button>
                 </div>
-                <select class="form-control form-control-sm border border-secondary" [(ngModel)]="rule.field" (change)="fieldChanged()">
+                <select class="form-control form-control-sm border border-secondary" [(ngModel)]="rule.field" (change)="fieldChanged(true)">
                     <option *ngFor="let field of fields" [ngValue]="field" [innerHtml]="field.label"></option>
                 </select>
             </div>
@@ -30,11 +30,11 @@ import { QueryConfigurationService } from '../services/configuration.service';
 
             <div *ngIf="rule.op=='bt'">
                 <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}">
+                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}">
                 </ng-container>
                 <span>-</span>
                 <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                    [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom}">
+                    [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}">
                 </ng-container>
             </div>
         </div>
@@ -53,7 +53,7 @@ export class RuleComponent {
     @Input()
     set rule(val: Rule) {
         this._rule = val;
-        this.fieldChanged();
+        this.fieldChanged(false);
     }
     get rule(): Rule {
         return this._rule;
@@ -63,7 +63,7 @@ export class RuleComponent {
 
     private _rule: Rule;
 
-    constructor(private config: QueryConfigurationService) { }
+    constructor(public config: QueryConfigurationService) { }
 
     addRule(): void {
         var field: Field;
@@ -83,7 +83,7 @@ export class RuleComponent {
         this.group.rules = this.group.rules.filter(x => x !== this.rule);
     }
 
-    fieldChanged(): void {
+    fieldChanged(fromControl: boolean): void {
 
         if (this._rule.datas === undefined) {
             this._rule.datas = [undefined, undefined];
@@ -98,6 +98,11 @@ export class RuleComponent {
             }
         } else {
             this.fieldOps = [];
+        }
+
+        if (fromControl) {
+            this._rule.data = null;
+            this._rule.datas = [];
         }
     }
 }
