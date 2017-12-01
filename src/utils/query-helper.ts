@@ -115,6 +115,14 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
         } else {
           rule2.data = datas[0];
         }
+
+        if (rule2.datas) {
+          for (let i: number = 0; i < rule2.datas.length; i++) {
+            if (rule2.datas[i] === undefined || rule2.datas[i] === null) {
+              rule2.datas[i] = '';
+            }
+          }
+        }
       }
 
       result.rules.push(rule2);
