@@ -17,7 +17,7 @@ import { QueryConfigurationService } from '../src/services/configuration.service
             </select>
           </ng-template>
         </ngx-query-field>
-        <ngx-query-field [name]="'field2'" [label]="'Address'" [type]="'string'">
+        <ngx-query-field [name]="'field2'" [label]="'Address'" [type]="'string'" [getRules]="getField2Rules">
         </ngx-query-field>
       </ngx-query>
       <pre *ngIf="query">{{query | json}}</pre>
@@ -50,5 +50,24 @@ export class Sample2Component {
 
   search(query: any): void {
     this.query = query;
+  }
+
+  
+  getField2Rules(rule: any): Array<any> {
+    var rules: Array<any> = [];
+
+    rules.push({
+      field: 'field10',
+      op: 'eq',
+      data: rule.datas[0]
+    });
+
+    rules.push({
+      field: 'field11',
+      op: 'ne',
+      data: rule.datas[0]
+    });
+
+    return rules;
   }
 }

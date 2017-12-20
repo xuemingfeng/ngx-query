@@ -12,6 +12,7 @@ export class FieldDirective {
   @Input() label: string;
   @Input() type: DataType = DataType.any;
   @Input() custom: any;
+  @Input() getRules: any;
   @Input()
   @ContentChild(ValueInputTemplateDirective, { read: TemplateRef })
   valueInputTemplate: TemplateRef<any>;
