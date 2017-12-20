@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 import { Field, QueryGroup, Rule, GroupOpItem } from '../query.types';
-import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
+import { cloneQueryGroup, generateQuery, validateQuery } from '../utils/query-helper';
 
 @Component({
   selector: 'ngx-query-advanced',
@@ -43,6 +43,10 @@ export class AdvancedComponent implements AfterViewInit {
 
   getQuery(): QueryGroup {
     return generateQuery(this.tempQueryTemplate);
+  }
+
+  validateQuery(): boolean {
+    return validateQuery(this.tempQueryTemplate);
   }
 
   private getRules(group: QueryGroup): Rule[] {

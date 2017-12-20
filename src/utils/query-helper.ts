@@ -147,3 +147,39 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
 
   return result;
 }
+
+export function validateQuery(queryGroup: QueryGroup): boolean {
+
+  let result: boolean = true;
+
+  if (queryGroup === undefined || queryGroup === null) {
+    return result;
+  }
+
+  if (queryGroup.rules && queryGroup.rules.length > 0) {
+    for (const rule of queryGroup.rules) {
+
+      const field: Field = <Field>rule.field;
+
+      if (field && field.validate) {
+        result = field.validate(rule);
+
+        if (!result) {
+          return result;
+        }
+      }
+    }
+  }
+
+  if (queryGroup.groups && queryGroup.groups.length > 0) {
+    for (const child of queryGroup.groups) {
+      result = validateQuery(child);
+
+      if (!result) {
+        return result;
+      }
+    }
+  }
+
+  return result;
+}
