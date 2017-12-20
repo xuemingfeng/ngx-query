@@ -1080,6 +1080,20 @@ export class QueryComponent {
     return query;
   }
 
+  validateQuery(): boolean {
+    var result: boolean &#x3D; true;
+
+    if (this.mode &#x3D;&#x3D;&#x3D; QueryMode.plain) {
+      result &#x3D; this._plainQuery.validateQuery();
+    } else if (this.mode &#x3D;&#x3D;&#x3D; QueryMode.advanced) {
+      result &#x3D; this._advancedQuery.validateQuery();
+    } else {
+      throw new Error(&#x60;Not implement the mode &#x27;${this.mode}&#x27;.&#x60;);
+    }
+
+    return result;
+  }
+
   showPlainPanel(): void {
     this.mode &#x3D; QueryMode.plain;
   }
@@ -1110,8 +1124,10 @@ export class QueryComponent {
   }
 
   executeQuery(): void {
-    var query: QueryGroup &#x3D; this.getQuery();
-    this.query.emit(query);
+    if (this.validateQuery()) {
+      var query: QueryGroup &#x3D; this.getQuery();
+      this.query.emit(query);
+    }
   }
 
   private translateFields(fields: Field[], valueInputTemplates: Array&lt;ValueInputTemplateDirective&gt;): void {

@@ -554,7 +554,7 @@
         <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, Output, AfterViewInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 
 import { Field, QueryGroup, Rule, GroupOpItem } from &#x27;../query.types&#x27;;
-import { cloneQueryGroup, generateQuery } from &#x27;../utils/query-helper&#x27;;
+import { cloneQueryGroup, generateQuery, validateQuery } from &#x27;../utils/query-helper&#x27;;
 
 @Component({
   selector: &#x27;ngx-query-advanced&#x27;,
@@ -596,6 +596,10 @@ export class AdvancedComponent implements AfterViewInit {
 
   getQuery(): QueryGroup {
     return generateQuery(this.tempQueryTemplate);
+  }
+
+  validateQuery(): boolean {
+    return validateQuery(this.tempQueryTemplate);
   }
 
   private getRules(group: QueryGroup): Rule[] {

@@ -511,6 +511,26 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-2">
+                                    <code>validate</code>
+                                </td>
+                                <td class="col-md-10">
+                                      <p>
+                                        <em>Type:</em>    <code>any</code>
+
+                                      </p>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-2" colspan="2">
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/directives/field.directive.ts:16</a></div>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2">
                                     <code>valueInputTemplate</code>
                                 </td>
                                 <td class="col-md-10">
@@ -522,7 +542,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-2" colspan="2">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/directives/field.directive.ts:18</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/directives/field.directive.ts:19</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -550,6 +570,7 @@ export class FieldDirective {
   @Input() type: DataType &#x3D; DataType.any;
   @Input() custom: any;
   @Input() getRules: any;
+  @Input() validate: any;
   @Input()
   @ContentChild(ValueInputTemplateDirective, { read: TemplateRef })
   valueInputTemplate: TemplateRef&lt;any&gt;;
