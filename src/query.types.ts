@@ -4,6 +4,7 @@ export interface Field {
     type: DataType;
     custom: any;
     valueInputTemplate: any;
+    getRules: any;
 }
 
 export enum DataType {

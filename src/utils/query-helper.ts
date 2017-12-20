@@ -90,42 +90,52 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
 
   if (queryGroup.rules && queryGroup.rules.length > 0) {
     for (const rule of queryGroup.rules) {
-      var rule2: Rule = {
-        field: rule.field['name'],
-        op: rule.op,
-        data: undefined,
-        datas: undefined
-      };
 
-      if (rule.datas) {
-        var datas: Array<any> = [];
-        for (var d of rule.datas) {
-          if (d instanceof Date) {
-            datas.push(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
+      const field: Field = <Field>rule.field;
+
+      if (field && field.getRules) {
+        var customRules: any = field.getRules(rule);
+        if (customRules) {
+          result.rules.push(...customRules);
+        }
+      } else {
+        var rule2: Rule = {
+          field: rule.field['name'],
+          op: rule.op,
+          data: undefined,
+          datas: undefined
+        };
+
+        if (rule.datas) {
+          var datas: Array<any> = [];
+          for (var d of rule.datas) {
+            if (d instanceof Date) {
+              datas.push(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
+            } else {
+              datas.push(d);
+            }
+          }
+
+          if (rule2.op === 'bt') {
+            rule2.datas = datas;
+            while (rule2.datas.length < 2) {
+              rule2.datas.push(null);
+            }
           } else {
-            datas.push(d);
+            rule2.data = datas[0];
           }
-        }
 
-        if (rule2.op === 'bt') {
-          rule2.datas = datas;
-          while (rule2.datas.length < 2) {
-            rule2.datas.push(null);
-          }
-        } else {
-          rule2.data = datas[0];
-        }
-
-        if (rule2.datas) {
-          for (let i: number = 0; i < rule2.datas.length; i++) {
-            if (rule2.datas[i] === undefined || rule2.datas[i] === null) {
-              rule2.datas[i] = '';
+          if (rule2.datas) {
+            for (let i: number = 0; i < rule2.datas.length; i++) {
+              if (rule2.datas[i] === undefined || rule2.datas[i] === null) {
+                rule2.datas[i] = '';
+              }
             }
           }
         }
-      }
 
-      result.rules.push(rule2);
+        result.rules.push(rule2);
+      }
     }
   }
 
