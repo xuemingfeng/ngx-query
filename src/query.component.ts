@@ -192,6 +192,20 @@ export class QueryComponent {
     return query;
   }
 
+  validateQuery(): boolean {
+    var result: boolean = true;
+
+    if (this.mode === QueryMode.plain) {
+      result = this._plainQuery.validateQuery();
+    } else if (this.mode === QueryMode.advanced) {
+      result = this._advancedQuery.validateQuery();
+    } else {
+      throw new Error(`Not implement the mode '${this.mode}'.`);
+    }
+
+    return result;
+  }
+
   showPlainPanel(): void {
     this.mode = QueryMode.plain;
   }
@@ -222,8 +236,10 @@ export class QueryComponent {
   }
 
   executeQuery(): void {
-    var query: QueryGroup = this.getQuery();
-    this.query.emit(query);
+    if (this.validateQuery()) {
+      var query: QueryGroup = this.getQuery();
+      this.query.emit(query);
+    }
   }
 
   private translateFields(fields: Field[], valueInputTemplates: Array<ValueInputTemplateDirective>): void {

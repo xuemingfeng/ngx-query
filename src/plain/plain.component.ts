@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 import { Field, QueryGroup, Rule } from '../query.types';
-import { cloneQueryGroup, generateQuery } from '../utils/query-helper';
+import { cloneQueryGroup, generateQuery, validateQuery } from '../utils/query-helper';
 import { QueryConfigurationService } from '../services/configuration.service';
 
 @Component({
@@ -63,6 +63,10 @@ export class PlainComponent implements AfterViewInit {
 
   getQuery(): QueryGroup {
     return generateQuery(this._tempQueryTemplate);
+  }
+
+  validateQuery(): boolean {
+    return validateQuery(this._tempQueryTemplate);
   }
 
   private getRules(group: QueryGroup): Rule[] {
