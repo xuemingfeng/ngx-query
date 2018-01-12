@@ -13,16 +13,18 @@ import { QueryConfigurationService } from '../services/configuration.service';
           <label class="col-md-3 col-form-label text-right">{{rule.field.label}}</label>
           <div class="col-md-9">
             <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
-              [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
+              [ngOutletContext]="{rules:rules, rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
             <div *ngIf="rule.op=='bt'" class="row">
               <div class="col">
                 <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                  [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}">
+                  [ngOutletContext]="{rules:rules, rule:rule, dataIndex:0,
+                    custom: rule.field.custom, placeholder: config.labels.misc.from}">
                 </ng-container>
               </div>
               <div class="col">
                 <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                  [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}">
+                  [ngOutletContext]="{rules:rules, rule:rule, dataIndex:1,
+                    custom: rule.field.custom, placeholder: config.labels.misc.to}">
                 </ng-container>
               </div>
             </div>
