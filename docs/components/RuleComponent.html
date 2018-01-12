@@ -447,15 +447,18 @@
         &lt;/select&gt;
 
         &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-            [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
+            [ngOutletContext]&#x3D;&quot;{rules:rules, rule:rule, dataIndex:0,
+                custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
 
         &lt;div *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
             &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}&quot;&gt;
+                [ngOutletContext]&#x3D;&quot;{rules:rules, rule:rule, dataIndex:0,
+                    custom: rule.field.custom, placeholder: config.labels.misc.from}&quot;&gt;
             &lt;/ng-container&gt;
             &lt;span&gt;-&lt;/span&gt;
             &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}&quot;&gt;
+                [ngOutletContext]&#x3D;&quot;{rules:rules, rule:rule, dataIndex:1,
+                    custom: rule.field.custom, placeholder: config.labels.misc.to}&quot;&gt;
             &lt;/ng-container&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -486,7 +489,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/advanced/rule.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/advanced/rule.component.ts:54</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -506,7 +509,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/advanced/rule.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/advanced/rule.component.ts:55</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -522,7 +525,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/advanced/rule.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/advanced/rule.component.ts:57</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -541,7 +544,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/advanced/rule.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/advanced/rule.component.ts:67</a></div>
                                 </td>
                             </tr>
     
@@ -585,7 +588,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/advanced/rule.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/advanced/rule.component.ts:65</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -605,7 +608,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/advanced/rule.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/advanced/rule.component.ts:61</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -643,15 +646,18 @@ import { QueryConfigurationService } from &#x27;../services/configuration.servic
             &lt;/select&gt;
 
             &lt;ng-container *ngIf&#x3D;&quot;rule.op!&#x3D;&#x27;bt&#x27;&quot; [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
+                [ngOutletContext]&#x3D;&quot;{rules:rules, rule:rule, dataIndex:0,
+                    custom: rule.field.custom}&quot;&gt;&lt;/ng-container&gt;
 
             &lt;div *ngIf&#x3D;&quot;rule.op&#x3D;&#x3D;&#x27;bt&#x27;&quot;&gt;
                 &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                    [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}&quot;&gt;
+                    [ngOutletContext]&#x3D;&quot;{rules:rules, rule:rule, dataIndex:0,
+                        custom: rule.field.custom, placeholder: config.labels.misc.from}&quot;&gt;
                 &lt;/ng-container&gt;
                 &lt;span&gt;-&lt;/span&gt;
                 &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;rule.field.valueInputTemplate&quot;
-                    [ngOutletContext]&#x3D;&quot;{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}&quot;&gt;
+                    [ngOutletContext]&#x3D;&quot;{rules:rules, rule:rule, dataIndex:1,
+                        custom: rule.field.custom, placeholder: config.labels.misc.to}&quot;&gt;
                 &lt;/ng-container&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -749,7 +755,7 @@ export class RuleComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="col-md-12 mb-2">    <div class="form-group">        <div class="input-group">            <div class="input-group-btn">                <button type="button" class="btn btn-outline-secondary btn-sm"                    (click)="addRule()"><i class="fa fa-plus"></i></button>                <button type="button" class="btn btn-outline-secondary btn-sm"                    (click)="removeRule()"><i class="fa fa-minus"></i></button>            </div>            <select class="form-control form-control-sm border border-secondary" [(ngModel)]="rule.field" (change)="fieldChanged(true)">                <option *ngFor="let field of fields" [ngValue]="field" [innerHtml]="field.label"></option>            </select>        </div>        <select class="form-control form-control-sm border border-secondary ml-1 mr-1" [(ngModel)]="rule.op">            <option *ngFor="let item of fieldOps" [(ngValue)]="item.key" [innerHtml]="item.label"></option>        </select>        <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"            [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>        <div *ngIf="rule.op==\'bt\'">            <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}">            </ng-container>            <span>-</span>            <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}">            </ng-container>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="col-md-12 mb-2">    <div class="form-group">        <div class="input-group">            <div class="input-group-btn">                <button type="button" class="btn btn-outline-secondary btn-sm"                    (click)="addRule()"><i class="fa fa-plus"></i></button>                <button type="button" class="btn btn-outline-secondary btn-sm"                    (click)="removeRule()"><i class="fa fa-minus"></i></button>            </div>            <select class="form-control form-control-sm border border-secondary" [(ngModel)]="rule.field" (change)="fieldChanged(true)">                <option *ngFor="let field of fields" [ngValue]="field" [innerHtml]="field.label"></option>            </select>        </div>        <select class="form-control form-control-sm border border-secondary ml-1 mr-1" [(ngModel)]="rule.op">            <option *ngFor="let item of fieldOps" [(ngValue)]="item.key" [innerHtml]="item.label"></option>        </select>        <ng-container *ngIf="rule.op!=\'bt\'" [ngTemplateOutlet]="rule.field.valueInputTemplate"            [ngOutletContext]="{rules:rules, rule:rule, dataIndex:0,                custom: rule.field.custom}"></ng-container>        <div *ngIf="rule.op==\'bt\'">            <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                [ngOutletContext]="{rules:rules, rule:rule, dataIndex:0,                    custom: rule.field.custom, placeholder: config.labels.misc.from}">            </ng-container>            <span>-</span>            <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"                [ngOutletContext]="{rules:rules, rule:rule, dataIndex:1,                    custom: rule.field.custom, placeholder: config.labels.misc.to}">            </ng-container>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AdvancedComponent', 'selector': 'ngx-query-advanced'},{'name': 'GroupComponent', 'selector': 'ngx-query-group'},{'name': 'PlainComponent', 'selector': 'ngx-query-plain'},{'name': 'QueryComponent', 'selector': 'ngx-query'},{'name': 'RuleComponent', 'selector': 'ngx-query-rule'}];
     var DIRECTIVES = [{'name': 'FieldDirective', 'selector': 'ngx-query-field'},{'name': 'ToolbarTemplateDirective', 'selector': '[ngx-query-toolbar-template]'},{'name': 'ValueInputTemplateDirective', 'selector': '[ngx-query-value-input-template]'}];
     var ACTUAL_COMPONENT = {'name': 'RuleComponent'};
