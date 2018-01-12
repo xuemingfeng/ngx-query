@@ -26,15 +26,18 @@ import { QueryConfigurationService } from '../services/configuration.service';
             </select>
 
             <ng-container *ngIf="rule.op!='bt'" [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom}"></ng-container>
+                [ngOutletContext]="{rules:rules, rule:rule, dataIndex:0,
+                    custom: rule.field.custom}"></ng-container>
 
             <div *ngIf="rule.op=='bt'">
                 <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                    [ngOutletContext]="{rule:rule, dataIndex:0, custom: rule.field.custom, placeholder: config.labels.misc.from}">
+                    [ngOutletContext]="{rules:rules, rule:rule, dataIndex:0,
+                        custom: rule.field.custom, placeholder: config.labels.misc.from}">
                 </ng-container>
                 <span>-</span>
                 <ng-container [ngTemplateOutlet]="rule.field.valueInputTemplate"
-                    [ngOutletContext]="{rule:rule, dataIndex:1, custom: rule.field.custom, placeholder: config.labels.misc.to}">
+                    [ngOutletContext]="{rules:rules, rule:rule, dataIndex:1,
+                        custom: rule.field.custom, placeholder: config.labels.misc.to}">
                 </ng-container>
             </div>
         </div>

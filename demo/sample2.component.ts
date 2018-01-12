@@ -11,8 +11,8 @@ import { QueryConfigurationService } from '../src/services/configuration.service
       <p>Set up <code>ngx-query</code> with <code>ngx-query-value-input-template</code>.</p>
       <ngx-query #ngxQuery [title]="queryTitle" (query)="search($event)" [queryTemplates]="queryTemplates">
         <ngx-query-field [name]="'field1'" [label]="'Full Name'" [type]="'string'" [custom]="dropdownItems">
-          <ng-template ngx-query-value-input-template let-rule="rule" let-dataIndex="dataIndex" let-options="custom">
-            <select class="form-control form-control-sm" [(ngModel)]="rule.datas[dataIndex]">
+          <ng-template ngx-query-value-input-template let-rules="rules" let-rule="rule" let-dataIndex="dataIndex" let-options="custom">
+            <select class="form-control form-control-sm" [(ngModel)]="rule.datas[dataIndex]" (ngModelChange)="field1Changed(rules,rule.datas[dataIndex])">
               <option *ngFor="let item of options" [ngValue]="item.key">{{item.name}}</option>              
             </select>
           </ng-template>
@@ -52,7 +52,7 @@ export class Sample2Component {
     this.query = query;
   }
 
-  
+
   getField2Rules(rule: any): Array<any> {
     var rules: Array<any> = [];
 
@@ -69,5 +69,15 @@ export class Sample2Component {
     });
 
     return rules;
+  }
+
+  field1Changed(rules: Array<any>, val: string) {
+    var field2Value: string = val === 'item 3' ? val + '-1234' : '';
+
+    for (var rule of rules) {
+      if (rule.field.name === 'field2') {
+        rule.datas[0] = field2Value;
+      }
+    }
   }
 }

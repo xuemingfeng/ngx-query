@@ -67,31 +67,37 @@ import { QueryConfigurationService } from './services/configuration.service';
   </div>
 
   <!-- Value Input Templates -->
-  <ng-template ngx-query-value-input-template dataType="any" let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
+  <ng-template ngx-query-value-input-template dataType="any" let-rules="rules"
+      let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
     <input type="text" class="form-control form-control-sm"
       [placeholder]="placeholder ? placeholder : rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="string" let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
+  <ng-template ngx-query-value-input-template dataType="string" let-rules="rules"
+      let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
     <input type="text" class="form-control form-control-sm"
       [placeholder]="placeholder ? placeholder : rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="boolean" let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
+  <ng-template ngx-query-value-input-template dataType="boolean" let-rules="rules"
+      let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
     <label class="custom-control custom-checkbox">
       <input type="checkbox" class="custom-control-input"
         [placeholder]="placeholder ? placeholder : rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
       <span class="custom-control-indicator"></span>
     </label>
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="number" let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
+  <ng-template ngx-query-value-input-template dataType="number" let-rules="rules"
+      let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
     <input type="number" class="form-control form-control-sm"
       [placeholder]="placeholder ? placeholder : rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template  dataType="date" let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
+  <ng-template ngx-query-value-input-template dataType="date" let-rules="rules"
+      let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
     <input type="text" class="form-control form-control-sm"
       [placeholder]="placeholder ? placeholder : rule.field.label" bsDatepicker
       #dp="bsDatepicker" [(bsValue)]="rule.datas[dataIndex]" />
   </ng-template>
-  <ng-template ngx-query-value-input-template dataType="datetime" let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
+  <ng-template ngx-query-value-input-template dataType="datetime" let-rules="rules"
+      let-rule="rule" let-dataIndex="dataIndex" let-placeholder="placeholder">
     <input type="date" class="form-control form-control-sm"
       [placeholder]="placeholder ? placeholder : rule.field.label" [(ngModel)]="rule.datas[dataIndex]" />
   </ng-template>
