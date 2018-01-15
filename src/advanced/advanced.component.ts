@@ -42,7 +42,11 @@ export class AdvancedComponent implements AfterViewInit {
   }
 
   getQuery(): QueryGroup {
-    return generateQuery(this.tempQueryTemplate);
+    return generateQuery(this.tempQueryTemplate, false);
+  }
+
+  getOriginalQuery(): QueryGroup {
+    return generateQuery(this.tempQueryTemplate, true);
   }
 
   validateQuery(): boolean {
