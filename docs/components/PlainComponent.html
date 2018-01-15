@@ -632,7 +632,11 @@ export class PlainComponent implements AfterViewInit {
   }
 
   getQuery(): QueryGroup {
-    return generateQuery(this._tempQueryTemplate);
+    return generateQuery(this._tempQueryTemplate, false);
+  }
+
+  getOriginalQuery(): QueryGroup {
+    return generateQuery(this._tempQueryTemplate, true);
   }
 
   validateQuery(): boolean {

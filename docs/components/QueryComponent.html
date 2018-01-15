@@ -1092,6 +1092,18 @@ export class QueryComponent {
     return query;
   }
 
+  getOriginalQuery(): QueryGroup {
+    var query: QueryGroup;
+    if (this.mode &#x3D;&#x3D;&#x3D; QueryMode.plain) {
+      query &#x3D; this._plainQuery.getOriginalQuery();
+    } else if (this.mode &#x3D;&#x3D;&#x3D; QueryMode.advanced) {
+      query &#x3D; this._advancedQuery.getOriginalQuery();
+    } else {
+      throw new Error(&#x60;Not implement the mode &#x27;${this.mode}&#x27;.&#x60;);
+    }
+    return query;
+  }
+
   validateQuery(): boolean {
     var result: boolean &#x3D; true;
 
