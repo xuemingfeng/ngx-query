@@ -198,6 +198,18 @@ export class QueryComponent {
     return query;
   }
 
+  getOriginalQuery(): QueryGroup {
+    var query: QueryGroup;
+    if (this.mode === QueryMode.plain) {
+      query = this._plainQuery.getOriginalQuery();
+    } else if (this.mode === QueryMode.advanced) {
+      query = this._advancedQuery.getOriginalQuery();
+    } else {
+      throw new Error(`Not implement the mode '${this.mode}'.`);
+    }
+    return query;
+  }
+
   validateQuery(): boolean {
     var result: boolean = true;
 

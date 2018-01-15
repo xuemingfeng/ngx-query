@@ -77,7 +77,7 @@ export function cloneQueryGroup(source: QueryGroup): QueryGroup {
   return result;
 }
 
-export function generateQuery(queryGroup: QueryGroup): QueryGroup {
+export function generateQuery(queryGroup: QueryGroup, original: boolean): QueryGroup {
   if (queryGroup === undefined || queryGroup === null) {
     return undefined;
   }
@@ -93,7 +93,7 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
 
       const field: Field = <Field>rule.field;
 
-      if (field && field.getRules) {
+      if (original === false && field && field.getRules) {
         var customRules: any = field.getRules(rule);
         if (customRules) {
           result.rules.push(...customRules);
@@ -141,7 +141,7 @@ export function generateQuery(queryGroup: QueryGroup): QueryGroup {
 
   if (queryGroup.groups && queryGroup.groups.length > 0) {
     for (const child of queryGroup.groups) {
-      result.groups.push(generateQuery(child));
+      result.groups.push(generateQuery(child, original));
     }
   }
 

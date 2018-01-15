@@ -20,6 +20,8 @@ export class Sample5Component {
 
   queryTitle: string = 'Search Orders';
   query: any;
+  @ViewChild("ngxQuery")
+  ngxQuery: QueryComponent;
 
   queryTemplates: any = [{
     name: 'Default',
@@ -76,7 +78,10 @@ export class Sample5Component {
   }];
 
   search(query: any): void {
-    this.query = query;
+    this.query = {
+      query: query,
+      original: this.ngxQuery.getOriginalQuery()
+    };
   }
 
   getField4Rules(rule: any): Array<any> {
